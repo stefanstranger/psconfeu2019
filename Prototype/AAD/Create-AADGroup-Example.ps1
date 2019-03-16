@@ -1,5 +1,5 @@
 <#
-    Create an Azure Active Directory Group
+    Create an Azure Active Directory Group Example
 #>
 
 
@@ -30,6 +30,10 @@ $params = @{
 $Token = Invoke-RestMethod @params
 #endregion
 
+#region Check Access Token
+ConvertFrom-JWT -Token $Token.access_token -OutVariable jwttoken
+$jwttoken.roles
+#endregion
 
 #region Get User info
 $Uri = ('https://graph.microsoft.com/v1.0/users/{0}' -f '74f060dc-fe58-4b72-a888-ae363052cb27')
