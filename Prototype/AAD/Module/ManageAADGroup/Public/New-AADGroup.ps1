@@ -36,7 +36,7 @@ Function New-AADGroup {
         #endregion
 
         #region parse Access Token
-        ConvertFrom-JWT -Token $Token
+        #ConvertFrom-JWT -Token $Token
         #endregion
 
         #region Create AAD Group
@@ -69,12 +69,15 @@ Function New-AADGroup {
             Method      = 'Post'
             URI         = $Uri 
         }
+        
+        $Response = Invoke-RestMethod @params -ErrorAction Stop
+        Write-Verbose -Message ('Response {0}' -f $($Response | Convertto-Json))
 
-        $Result = Invoke-RestMethod @params -ErrorAction Stop
+        return ($Response)
         #endregion
 
     }
     catch {
-        $_
+        Throw ('Error Message {0}' -f ($_ | ConvertFrom-Json).error)
     }
 }
