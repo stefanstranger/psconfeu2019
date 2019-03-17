@@ -1,3 +1,10 @@
+<#
+    https://docs.microsoft.com/en-us/graph/api/group-post-groups?view=graph-rest-1.0
+
+    Example:
+    New-AADGroup -DisplayName 'demo' -Description 'demo' -MailNickName 'demo' -OwnerObjectID '74f060dc-fe58-4b72-a888-ae363052cb27' -ClientId 'a6e00d89-360e-40c6-a7de-3ad29d733fc7' -ClientSecret $env:psconfeu -Verbose
+#>
+
 Function New-AADGroup {
     [CmdletBinding()]
     Param(

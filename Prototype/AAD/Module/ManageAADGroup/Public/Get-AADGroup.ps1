@@ -1,7 +1,10 @@
 <#
     https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-1.0
     https://graph.microsoft.com/v1.0/groups?$filter=startswith(displayName,'Test')
-    #>
+
+    Example:
+    Get-AADGroup -DisplayName 'demo' -ClientId 'a6e00d89-360e-40c6-a7de-3ad29d733fc7' -ClientSecret $env:psconfeu -Verbose
+#>
 
 Function Get-AADGroup {
     [CmdletBinding()]
@@ -45,7 +48,7 @@ Function Get-AADGroup {
         }
         
         $Response = (Invoke-RestMethod @params -ErrorAction Stop).Value
-        Write-Verbose -Message ('Response {0}' -f $($Response | Convertto-Json))
+        Write-Verbose -Message ('Response: {0}' -f $($Response | Convertto-Json))
         #When no AAD Group is found create an error message
         if ($Response) {
             return ($Response)
