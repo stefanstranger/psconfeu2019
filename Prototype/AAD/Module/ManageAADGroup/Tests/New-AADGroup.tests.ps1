@@ -17,7 +17,7 @@ Import-Module $ManifestPath -Verbose:$false
 #endregion
 
 #region enable verbose
-$VerbosePreference = 'Continue' #Disable when publised
+#$VerbosePreference = 'Continue' #Disable when publised
 #endregion
 
 
