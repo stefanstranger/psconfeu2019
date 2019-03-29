@@ -94,8 +94,6 @@ Function New-AADGroup {
             $Body += @{'members@odata.bind' = $MemberObjectList}
         }
 
-        #$body | convertto-json
-
         $params = @{
             ContentType = 'application/json'
             Headers     = @{
@@ -106,9 +104,9 @@ Function New-AADGroup {
             URI         = $Uri 
         }
         $Response = Invoke-RestMethod @params -ErrorAction Stop
-        Write-Verbose -Message ('New-AADGroup - Response {0}' -f $($Response | Convertto-Json))
+        Write-Verbose -Message ('New-AADGroup - Response {0}' -f $($Response[1] | Convertto-Json))
 
-        return ($Response)
+        return ($Response[1])
         #endregion
 
     }
