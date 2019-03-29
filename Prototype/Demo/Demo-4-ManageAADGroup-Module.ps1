@@ -13,17 +13,6 @@ $DisplayName = 'PSConfEu-Demo-Group'
 Import-Module ..\Module\ManageAADGroup -verbose
 #endregion
 
-#region Check if Group Exists
-$params = @{
-    'DisplayName'  = $DisplayName
-    'ClientID'     = $ClientID
-    'ClientSecret' = $ClientSecret
-    'TenantID'     = $Tenantid
-    'Verbose'      = $true
-}
-Get-AADGroup @params
-#endregion
-
 #region Create AAD Security Group
 $params = @{
     'DisplayName'       = $DisplayName
@@ -37,6 +26,17 @@ $params = @{
     'Verbose'           = $true
 }
 New-AADGroup @params
+#endregion
+
+#region Check if Group Exists
+$params = @{
+    'DisplayName'  = $DisplayName
+    'ClientID'     = $ClientID
+    'ClientSecret' = $ClientSecret
+    'TenantID'     = $Tenantid
+    'Verbose'      = $true
+}
+Get-AADGroup @params
 #endregion
 
 #region remove AAD Group
