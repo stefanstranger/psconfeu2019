@@ -1,5 +1,12 @@
 <#
     Demo Universal Dashboard Manage AAD Group REST API
+
+    In browser you can use: 
+    http://localhost:8080/api/getgroup?displayname=PSConfEu-Demo-Group
+
+    http://localhost:8080/api/removegroup?displayname=PSConfEu-Demo-Group
+
+    http://localhost:8080/api/newgroup?displayname=PSConfEu-Demo-Group&description=PSConfEu%20Demo%20Group&mailnickname=psconfeudemogroup&userprincipalname=johndoe@sstranger.onmicrosoft.com&members=janedoe@sstranger.onmicrosoft.com
 #>
 
 #region Import Universal Dashboard Community PowerShell Module
@@ -150,7 +157,7 @@ $Endpoints += New-UDEndpoint -Url "/removegroup" -Method "POST" -Endpoint {
 #endregion
 
 #region start Endpoints
-Start-UDRestApi -Endpoint $Endpoints
+Start-UDRestApi -port 8080 -Endpoint $Endpoints -Name RESTAPI
 #endregion
 
 #region Call REST API to Create Group
@@ -161,23 +168,23 @@ $body = @{
     'UserPrincipalName' = 'johndoe@sstranger.onmicrosoft.com'
     'Members'           = 'janedoe@sstranger.onmicrosoft.com'
 }
-Invoke-RestMethod -Uri http://localhost:80/api/newgroup -Method POST -Body $body -OutVariable Result
+Invoke-RestMethod -Uri http://localhost:8080/api/newgroup -Method POST -Body $body -OutVariable Result
 #endregion
 
 #region Call REST API to get Group
 $body = @{
     'DisplayName' = 'PSConfEu-Demo-Group'
 }
-Invoke-RestMethod -Uri http://localhost:80/api/getgroup -Method GET -Body $body -OutVariable Result
+Invoke-RestMethod -Uri http://localhost:8080/api/getgroup -Method GET -Body $body -OutVariable Result
 #endregion
 
 #region Call REST API to remove Group
 $body = @{
     'DisplayName' = 'PSConfEu-Demo-Group'
 }
-Invoke-RestMethod -Uri http://localhost:80/api/removegroup -Method POST -Body $body -OutVariable Result
+Invoke-RestMethod -Uri http://localhost:8080/api/removegroup -Method POST -Body $body -OutVariable Result
 #endregion
 
 #region Stop UD REST API
-Get-UDRestApi | Stop-UDRestApi
+Stop-UDRestApi -Name RESTAPI
 #endregion
