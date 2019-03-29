@@ -76,5 +76,19 @@ $params = @{
     URI         = $Uri 
 }
 
-$Result = Invoke-RestMethod @params
+Invoke-RestMethod @params -OutVariable Result
+#endregion
+
+#region Remove AAD Group
+$Uri = ('https://graph.microsoft.com/v1.0/groups/{0}' -f $($Result.id))
+$params = @{
+    ContentType = 'application/json'
+    Headers     = @{
+        'authorization' = "Bearer $($Token.access_token)"
+    }
+    Method      = 'Delete'
+    URI         = $Uri 
+}
+
+Invoke-RestMethod @params
 #endregion
