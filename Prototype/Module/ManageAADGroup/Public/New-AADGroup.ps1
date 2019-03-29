@@ -65,7 +65,6 @@ Function New-AADGroup {
 
                 $MemberObjectList += ('https://graph.microsoft.com/v1.0/users/{0}' -f $($AADUserMember.id))            
             }
-            $MemberObjectList
         }
         #endregion
 
@@ -104,9 +103,9 @@ Function New-AADGroup {
             URI         = $Uri 
         }
         $Response = Invoke-RestMethod @params -ErrorAction Stop
-        Write-Verbose -Message ('New-AADGroup - Response {0}' -f $($Response[1] | Convertto-Json))
+        Write-Verbose -Message ('New-AADGroup - Response {0}' -f $($Response | Convertto-Json))
 
-        return ($Response[1])
+        return ($Response)
         #endregion
 
     }
