@@ -32,7 +32,7 @@ Function Get-AADGroup {
         }
 
         $Token = Get-AccessToken @params
-        Write-Verbose ('Token: {0}' -f $Token.access_token)
+        Write-Debug -Message ('Token: {0}' -f $Token.access_token)
         #endregion
 
         #region Get AAD Group
