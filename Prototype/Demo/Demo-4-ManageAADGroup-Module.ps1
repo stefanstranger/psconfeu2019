@@ -6,16 +6,16 @@
 $Tenantid = '496f0b27-4fa4-4c3d-8bbe-19c4b6875c81' #sstranger
 $ClientID = 'a6e00d89-360e-40c6-a7de-3ad29d733fc7' #ApplicationID
 $ClientSecret = "$env:psconfeu"
-$GroupName = 'PSConfEu-Demo-Group'
+$DisplayName = 'PSConfEu-Demo-Group'
 #endregion
 
 #region Import ManageAADGroup Module
-Import-Module ..\AAD\Module\ManageAADGroup -verbose
+Import-Module ..\Module\ManageAADGroup -verbose
 #endregion
 
 #region Check if Group Exists
 $params = @{
-    'DisplayName'  = $GroupName
+    'DisplayName'  = $DisplayName
     'ClientID'     = $ClientID
     'ClientSecret' = $ClientSecret
     'TenantID'     = $Tenantid
@@ -26,7 +26,7 @@ Get-AADGroup @params
 
 #region Create AAD Security Group
 $params = @{
-    'DisplayName'       = $GroupName
+    'DisplayName'       = $DisplayName
     'Description'       = 'PSConfEu Demo Group'
     'MailNickName'      = 'psconfeudemogroup'
     'UserPrincipalName' = 'johndoe@sstranger.onmicrosoft.com'
@@ -41,7 +41,7 @@ New-AADGroup @params
 
 #region remove AAD Group
 $params = @{
-    'DisplayName'  = $GroupName
+    'DisplayName'  = $DisplayName
     'ClientID'     = $ClientID
     'ClientSecret' = $ClientSecret
     'TenantID'     = $Tenantid
