@@ -56,8 +56,8 @@ $Result
 $Uri = ('https://graph.microsoft.com/v1.0/groups')
 
 $Body = [ordered]@{
-    'displayName'       = 'PSConfEu Demo Group'
-    'description'       = "PSConfEu-Demo-Group"
+    'displayName'       = 'PSConfEu-Demo-Group'
+    'description'       = "PSConfEu Demo Group"
     "mailEnabled"       = $false
     "mailNickname"      = "psconfeudemogroup"
     "securityEnabled"   = $true
