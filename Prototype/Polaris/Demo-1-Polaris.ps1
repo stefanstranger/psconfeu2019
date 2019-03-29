@@ -1,3 +1,11 @@
+<#
+    Polaris can be used by web developers and system administrators alike to build web applications and APIs quickly and with very little code.
+
+    Link: https://powershell.github.io/Polaris/docs/about_Polaris.html
+
+    Simple example of an API (listening on port 8585) returning running Processes on localhost
+#>
+
 #region clean up
 Remove-PolarisRoute
 Stop-Polaris
