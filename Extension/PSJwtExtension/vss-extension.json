@@ -1,0 +1,48 @@
+{
+    "manifestVersion": 1,
+    "id": "CCoE-Bootcamp-Demo-Sample-StorageAccount",
+    "version": "0.0.0",
+    "name": "CCoE Bootcamp Demo Storage Account",
+    "description": "The CCoE Demo certified and security approved Azure services",
+    "publisher": "CCoEBootcamp",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Cloud"
+        }
+    ],
+    "icons": {
+        "default": "images/Azure-128.png",
+        "large": "images/Azure-512.png"
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "Azure",
+        "Cloud",
+        "CCoE"
+    ],
+    "contributions": [
+        {
+            "id": "CCoE-Demo-StorageAccount",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "StorageAccount-v1.0"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "StorageAccount-v1.0",
+            "packagePath": "StorageAccount-v1.0"
+        }
+    ]
+}
