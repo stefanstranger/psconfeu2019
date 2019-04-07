@@ -30,7 +30,7 @@ param ($PAT)
 #region variables
 $script:ProductName = 'PSJwt'
 $script:Publisher = 'SLVStranger'
-$script:ExtensionId = 'CCoE-Bootcamp-Demo-Sample-StorageAccount'
+$script:ExtensionId = 'PSConfEU-Demo-Extension'
 $script:ProductVersion = '1.0'
 $script:ProductPath = ( '{0}\{1}-v{2}' -f $PSScriptRoot, $ProductName, $ProductVersion)
 #endregion
@@ -51,25 +51,27 @@ task Version {
 #region Task copy ps_modules to Extension
 task ps_modules {
     if (-not (Test-Path ("$script:ProductPath\ps_modules"))) {
-
         $null = New-Item -Path ("$script:ProductPath\ps_modules") -ItemType Directory
-
     }
 
-    # Excluded file 'OpenSSL License.txt' because tfx cannot handle files with space in their name
-    Copy-Item -Path '..\..\ps_modules\' -Filter *.* -Recurse -Destination ("$script:ProductPath") -Exclude 'OpenSSL License.txt' -Force
+    Copy-Item -Path '..\ps_modules\' -Filter *.* -Recurse -Destination ("$script:ProductPath") -Force
+    
+    if (-not (Test-Path ("$script:ProductPath\ps_modules\PSJwt"))) {
+        $null = New-Item -Path ("$script:ProductPath\ps_modules\PSJwt") -ItemType Directory
+    }
+    Copy-Item -Path '..\Module\PSJwt' -Filter *.* -Recurse -Destination ("$script:ProductPath\ps_modules") -Force
 }
 #endregion
 
 #region Install Node Modules
 task InstallNodeModules {
-    exec {npm install "$PSScriptRoot" }
+    exec { npm.cmd install "$PSScriptRoot" }
 }
 #endregion
 
 #region Task Create Extension. Don't update Extension version.
 task CreateExtension {
-    exec {tfx extension create --root ("$PSScriptRoot") --output-path ("$PSScriptRoot\dist") --manifest-globs vss-extension.json --override ('{{\"version\": \"{0}\"}}' -f $script:newVersion) --trace-level debug} 
+    exec { tfx.cmd extension create --root ("$PSScriptRoot") --output-path ("$PSScriptRoot\dist") --manifest-globs vss-extension.json --override ('{{\"version\": \"{0}\"}}' -f $script:newVersion) --trace-level debug } 
 }
 #endregion
 
@@ -85,9 +87,9 @@ task UpdateExtensionVersion {
 
     try {
         #region retrieve latest extension version from MarketPlace
-        $Version = exec {tfx extension show --publisher ($script:Publisher) --extension-id ($script:ExtensionId) --token ($PAT) --output json | 
-                convertfrom-json | 
-                select-Object -ExpandProperty Versions | Select-Object -First 1 | select-object -Property version 
+        $Version = exec { tfx.cmd extension show --publisher ($script:Publisher) --extension-id ($script:ExtensionId) --token ($PAT) --output json | 
+            ConvertFrom-Json | 
+            Select-Object -ExpandProperty Versions | Select-Object -First 1 | Select-Object -Property version 
         }
         [Version]$Latest = $Version.version
         #endregion
@@ -122,7 +124,7 @@ task PublishExtension {
     try {
         #retrieve file name vsix file
         $vsixfile = (Get-ChildItem -Path ("$PSScriptRoot\dist") -Filter "*.vsix").Fullname | Split-Path -Leaf -ErrorAction Stop
-        exec {tfx extension publish --vsix ("$PSScriptRoot\dist\$vsixfile") --token ($PAT)}
+        exec { tfx.cmd extension publish --vsix ("$PSScriptRoot\dist\$vsixfile") --token ($PAT) }
     }
     catch {
         throw $_
