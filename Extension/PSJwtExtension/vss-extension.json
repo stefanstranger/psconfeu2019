@@ -1,36 +1,35 @@
 {
     "manifestVersion": 1,
-    "id": "CCoE-Bootcamp-Demo-Sample-StorageAccount",
+    "id": "PSConfEU-Demo-Extension",
     "version": "0.0.0",
-    "name": "CCoE Bootcamp Demo Storage Account",
-    "description": "The CCoE Demo certified and security approved Azure services",
-    "publisher": "CCoEBootcamp",
+    "name": "PSConfEU Demo Extension",
+    "description": "PSConfEU JSON Web Token Demo Extension",
+    "publisher": "SLVStranger",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services.Cloud"
         }
     ],
     "icons": {
-        "default": "images/Azure-128.png",
-        "large": "images/Azure-512.png"
+        "default": "images/JWT-128.png",
+        "large": "images/JWT-512.png"
     },
     "categories": [
         "Azure Pipelines"
     ],
     "tags": [
-        "Azure",
-        "Cloud",
-        "CCoE"
+        "JSON",
+        "Demo"
     ],
     "contributions": [
         {
-            "id": "CCoE-Demo-StorageAccount",
+            "id": "JWT-Demo",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "StorageAccount-v1.0"
+                "name": "PSJwt-v1.0"
             }
         }
     ],
@@ -41,8 +40,8 @@
             "packagePath": "lib"
         },
         {
-            "path": "StorageAccount-v1.0",
-            "packagePath": "StorageAccount-v1.0"
+            "path": "PsJwt-v1.0",
+            "packagePath": "PsJwt-v1.0"
         }
     ]
 }

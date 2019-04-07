@@ -28,8 +28,8 @@
 param ($PAT)
 
 #region variables
-$script:ProductName = 'StorageAccount'
-$script:Publisher = 'CCoEBootcamp'
+$script:ProductName = 'PSJwt'
+$script:Publisher = 'SLVStranger'
 $script:ExtensionId = 'CCoE-Bootcamp-Demo-Sample-StorageAccount'
 $script:ProductVersion = '1.0'
 $script:ProductPath = ( '{0}\{1}-v{2}' -f $PSScriptRoot, $ProductName, $ProductVersion)

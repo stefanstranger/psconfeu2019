@@ -1,232 +1,63 @@
 {
   "id": "ecf39f25-2f79-4907-886d-d096c446a320",
-  "name": "CCoE-Demo-StorageAccount",
-  "friendlyName": "CCoE Demo Azure Storage Account",
-  "description": "The CCoE Demo certified Azure Storage Account",
-  "helpMarkDown": "Use this release task to deploy a Storage Account as a certified service.",
+  "name": "JWT-Demo",
+  "friendlyName": "JSON Web Token Extension Demo",
+  "description": "JSON Web Token Extension Demo for PowerShell Conference EU 2019",
+  "helpMarkDown": "Use this task to decode or create a JSON Web Token",
   "category": "Deploy",
   "visibility": [
     "Release"
   ],
-  "author": "CCoE Demo Azure",
+  "author": "Stefan Stranger",
   "version": {
     "Major": 1,
     "Minor": 0,
     "Patch": 0
   },
   "preview": "true",
-  "demands": [
-    "azureps"
-  ],
-  "instanceNameFormat": "Azure Storage Account on $(resourceGroupName)",
+  "instanceNameFormat": "JSON Web Token Extension Demo",
   "groups": [
     {
-      "name": "AzureDetails",
-      "displayName": "Azure Context Details",
+      "name": "PSJwt",
+      "displayName": "PowerShell JSON Web Token",
       "isExpanded": true
     },
     {
-      "name": "ActionDetails",
-      "displayName": "Storage Account Action Details",
+      "name": "ConvertFrom",
+      "displayName": "Decode JSON Web Token",
       "isExpanded": true
     },
     {
-      "name": "ErrorHandling",
-      "displayName": "Error handling for Operations Tasks",
-      "isExpanded": false
-    },
-    {
-      "name": "AzurePowerShellVersionOptions",
-      "displayName": "Azure PowerShell version options",
-      "isExpanded": false
-    },
-    {
-      "name": "Troubleshooting",
-      "displayName": "Deployment Troubleshooting",
-      "isExpanded": false
+      "name": "ConvertTo",
+      "displayName": "Create JSON Web Token",
+      "isExpanded": true
     }
   ],
   "inputs": [
     {
-      "name": "ConnectedServiceNameARM",
-      "aliases": [
-        "azureSubscription"
-      ],
-      "type": "connectedService:AzureRM",
-      "label": "Azure Service Endpoint",
-      "defaultValue": "",
-      "required": true,
-      "groupName": "AzureDetails",
-      "helpMarkDown": "Azure Resource Manager connection used for actions"
-    },
-    {
-      "name": "ConnectedServiceNameSelector",
-      "aliases": [
-        "azureConnectionType"
-      ],
-      "type": "string",
-      "label": "Azure Connection Type",
-      "required": true,
-      "groupName": "AzureDetails",
-      "helpMarkDown": "",
-      "defaultValue": "ConnectedServiceNameARM",
-      "visibleRule": "ConnectedServiceNameARM = DUMMY"
-    },
-    {
-      "name": "ResourceGroupName",
-      "type": "string",
-      "label": "Resource group",
-      "defaultValue": "$(ResourceGroupName)",
-      "required": true,
-      "groupName": "AzureDetails",
-      "helpMarkDown": "Provide the name of an existing resource group to deploy the Azure Application Insights in."
-    },
-    {
-      "name": "StorageAccountName",
-      "type": "string",
-      "label": "Name",
-      "defaultValue": "",
-      "required": true,
-      "groupName": "ActionDetails",
-      "helpMarkDown": "The resource name for the Azure Storage Account. \nTo Storage Accounts can only be lowercase!"
-    },
-    {
       "name": "action",
       "type": "pickList",
       "label": "Action",
-      "defaultValue": "createStorageAccount",
+      "defaultValue": "convertfrom-jwt",
       "required": true,
-      "groupName": "ActionDetails",
-      "helpMarkDown": "Choose the action for Storage Account",
+      "groupName": "PSJwt",
+      "helpMarkDown": "Choose the action for PSJwt PowerShell Module",
       "properties": {
         "EditableOptions": "False"
       },
       "options": {
-        "createStorageAccount": "Create Storage Account",
-        "removeStorageAccount": "Remove Storage Account"
+        "convertfrom-jwt": "Decode JSON Web Token",
+        "convertto-jwt": "Create JSON Web Token"
       }
     },
     {
-      "name": "errorActionPreference",
-      "type": "pickList",
-      "label": "ErrorActionPreference",
-      "required": false,
-      "defaultValue": "stop",
-      "options": {
-        "stop": "Stop",
-        "continue": "Continue",
-        "silentlyContinue": "SilentlyContinue"
-      },
-      "groupName": "ErrorHandling",
-      "helpMarkDown": "Select the value of the ErrorActionPreference variable for executing the script."
-    },
-    {
-      "name": "FailOnStandardError",
-      "type": "boolean",
-      "label": "Fail on Standard Error",
-      "required": false,
-      "defaultValue": "false",
-      "groupName": "ErrorHandling",
-      "helpMarkDown": "If this is true, this task will fail if any errors are written to the error pipeline, or if any data is written to the Standard Error stream."
-    },
-    {
-      "name": "TargetAzurePs",
-      "aliases": [
-        "azurePowerShellVersion"
-      ],
-      "type": "radio",
-      "label": "Azure PowerShell Version",
-      "defaultValue": "LatestVersion",
-      "required": false,
-      "options": {
-        "LatestVersion": "Latest installed version",
-        "OtherVersion": "Specify other version"
-      },
-      "groupName": "AzurePowerShellVersionOptions",
-      "helpMarkDown": "In case of hosted agents, the supported Azure PowerShell Versions are: 2.1.0, 3.8.0, 4.2.1, 5.1.1 and 6.7.0(Hosted VS2017 Queue), 3.6.0(Hosted Queue).\nTo pick the latest version available on the agent, select \"Latest installed version\".\n\nFor private agents you can specify preferred version of Azure PowerShell using \"Specify version\""
-    },
-    {
-      "name": "CustomTargetAzurePs",
-      "aliases": [
-        "preferredAzurePowerShellVersion"
-      ],
+      "name": "token",
       "type": "string",
-      "label": "Preferred Azure PowerShell Version",
-      "defaultValue": "",
+      "label": "token",
       "required": true,
-      "visibleRule": "TargetAzurePs = OtherVersion",
-      "groupName": "AzurePowerShellVersionOptions",
-      "helpMarkDown": "Preferred Azure PowerShell Version needs to be a proper semantic version eg. 1.2.3. Regex like 2.\\*,2.3.\\* is not supported. The Hosted VS2017 Pool currently supports Azure module versions: 2.1.0, 3.8.0, 4.2.1, 5.1.1 and AzureRM module versions: 2.1.0, 3.8.0, 4.2.1, 5.1.1, 6.7.0"
-    },
-    {
-      "name": "location",
-      "type": "pickList",
-      "label": "Location for Storage Account",
-      "defaultValue": "westeurope",
-      "required": true,
-      "groupName": "ActionDetails",
-      "helpMarkDown": "Location for deploying Storage Account.\n\n**Warning:** Cannot be changed after initial deployment and location must be allowed by the policy set on the resource group!",
-      "properties": {
-        "EditableOptions": "False"
-      },
-      "options": {
-        "westeurope": "West Europe",
-        "northeurope": "North Europe",
-        "uksouth": "UK South"
-      },
-      "visibleRule": "action = createStorageAccount"
-    },
-    {
-      "name": "AccountType",
-      "type": "pickList",
-      "label": "Storage Account Type",
-      "required": true,
-      "groupName": "ActionDetails",
-      "helpMarkDown": "Azure Storage offers three types of storage accounts",
-      "properties": {
-        "EditableOptions": "False"
-      },
-      "options": {
-        "Standard_LRS": "Standard_LRS",
-        "Standard_GRS": "Standard_GRS",
-        "Standard_RAGRS": "Standard_RAGRS",
-        "Standard_ZRS": "Standard_ZRS"
-      },
-      "visibleRule": "action = createStorageAccount"
-    },
-    {
-      "name": "AccessTier",
-      "type": "pickList",
-      "label": "Storage Account Access Tier",
-      "required": true,
-      "groupName": "ActionDetails",
-      "helpMarkDown": "The Storage Account Access Tier",
-      "properties": {
-        "EditableOptions": "False"
-      },
-      "options": {
-        "Hot": "Hot",
-        "Cool": "Cool"
-      },
-      "visibleRule": "action = createStorageAccount"
-    },
-    {
-      "name": "debugDeploymentDebugLevel",
-      "type": "pickList",
-      "label": "ARM deployment information logging",
-      "defaultValue": "None",
-      "required": true,
-      "groupName": "Troubleshooting",
-      "helpMarkDown": "Choose what (if any) information should be logged by Azure Resource Manager about the ARM deployment.\r\n\r\n*Warning* Even though this log information is not directly visible in VSTS, this may expose secrets being sent to Azure resource providers in deployment logs.",
-      "properties": {
-        "EditableOptions": "False"
-      },
-      "options": {
-        "None": "No logging (safe level)",
-        "RequestContent": "ARM request (see warning)",
-        "ResponseContent": "ARM response see (warning)",
-        "All": "ARM request and response (see warning)"
-      }
+      "groupName": "ConvertFrom",
+      "helpMarkDown": "JSON Web token",
+      "visibleRule": "action = convertfrom-jwt"
     }
   ],
   "execution": {
