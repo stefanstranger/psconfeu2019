@@ -9,12 +9,12 @@ $Action = Get-VstsInput -Name Action -Require
 
 #region Import PSJwt PowerShell Module
 Write-Verbose -Message ('Importing PSJwt PowerShell Module')
-Import-Module $PSScriptRoot\ps_modules\PSJwt\PSJwt.psd1
+Import-Module $PSScriptRoot\ps_modules\PSJwt\1.0.0\\PSJwt.psd1
 #endregion
 
 #region Execute selected Action
 switch ($action) {
-    "convertfrom-jwt" {
+    "convertfrom" {
         Write-Verbose "Get JSON Web Token"
         $Token = Get-VstsInput -Name Token -Require
 
@@ -27,7 +27,7 @@ switch ($action) {
         Write-Host "Decode JSON Web Token"
         ConvertFrom-JWT -Token $Token       
     }
-    "convertto-jwt" {
+    "convertto" {
         Write-Verbose "Get PayLoad and Secret"
         $PayLoad = Get-VstsInput -Name PayLoad -Require
         $Secret = Get-VstsInput -Name Secret -Require

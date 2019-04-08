@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 0
+    "Patch": 2
   },
   "preview": "true",
   "instanceNameFormat": "JSON Web Token Extension Demo",
@@ -38,7 +38,7 @@
       "name": "action",
       "type": "pickList",
       "label": "Action",
-      "defaultValue": "convertfrom-jwt",
+      "defaultValue": "convertfrom",
       "required": true,
       "groupName": "PSJwt",
       "helpMarkDown": "Choose the action for PSJwt PowerShell Module",
@@ -46,8 +46,8 @@
         "EditableOptions": "False"
       },
       "options": {
-        "convertfrom-jwt": "Decode JSON Web Token",
-        "convertto-jwt": "Create JSON Web Token"
+        "convertfrom": "Decode JSON Web Token",
+        "convertto": "Create JSON Web Token"
       }
     },
     {
@@ -55,9 +55,9 @@
       "type": "string",
       "label": "token",
       "required": true,
-      "groupName": "ConvertFrom",
+      "groupName": "PSJwt",
       "helpMarkDown": "JSON Web token",
-      "visibleRule": "action = convertfrom-jwt"
+      "visibleRule": "action = convertfrom"
     }
   ],
   "execution": {
