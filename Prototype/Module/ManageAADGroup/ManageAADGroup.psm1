@@ -13,5 +13,4 @@ Foreach ($import in @($Public + $Private)) {
     }
 }
 
-
 Export-ModuleMember -Function $Public.Basename

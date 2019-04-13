@@ -7,6 +7,7 @@ Enum inputtypes {
     radio
 }
 
+#region InputProperties Class
 Class InputProperties {
     [bool] $EditableOptions
 
@@ -16,8 +17,9 @@ Class InputProperties {
         $this.EditableOptions = @{'EditableOptions' = $EditableOptions }
     }
 }
+#endregion
 
-
+#region Input Class
 Class Input {
     [string] $name #required
     [string[]] $aliases
@@ -77,8 +79,9 @@ Class Input {
     }
     #endregion  
 }
+#endregion
 
-
+#region ExtensionTask Class
 Class ExtensionTask {
     #public properties
     [guid] $id
@@ -138,104 +141,60 @@ Class ExtensionTask {
     }
     #endregion
 }
-
-#region create Input Objects
-
-#region create InputObjectProperty
-$InputProperty = [InputProperties]::new($false)
 #endregion
 
-$MyInputs = @()
+#region New Input Property Function
+Function New-InputPropertyObject {
+    [CmdletBInding()]
+    Param(
+        [Parameter(Mandatory = $true)]
+        [boolean]$Exist
+    )
 
-#region create Input Object with hashtable
-$MyInput = [Input]@{
-    name         = 'ConvertFrom-JWT'
-    aliases      = 'aliases'
-    label        = 'Parsing (decoding) and verifying JSON Web Token'
-    type         = 'string'
-    defaultvalue = $null
-    required     = $true
-    helpMarkDown = 'Parsing (decoding) and verifying JSON Web Token'
-    groupName    = '__AllParameterSets'
-    visibleRule  = $null
-    properties   = $InputProperty
-    options      = $null
+    return [InputProperties]::new($false)
 }
 #endregion
 
-$MyInputs += $MyInput
+#region New Input Object Function
+Function New-InputObject {
+    [CmdletBInding()]
+    Param(
+        [Parameter(Mandatory = $true)]
+        [string]$name,
+        [Parameter(Mandatory = $true)]
+        [string]$aliases,
+        [Parameter(Mandatory = $true)]
+        [string]$label,
+        [Parameter(Mandatory = $true)]
+        [string]$type,
+        [Parameter(Mandatory = $false)]
+        [string]$defaultvalue,
+        [Parameter(Mandatory = $true)]
+        [boolean]$required,
+        [Parameter(Mandatory = $false)]
+        [string]$helpMarkDown,
+        [Parameter(Mandatory = $true)]
+        [string]$groupname,
+        [Parameter(Mandatory = $true)]
+        [boolean]$visibleRule,
+        [Parameter(Mandatory = $true)]
+        [InputProperties]$properties,
+        [Parameter(Mandatory = $false)]
+        [string]$options
+    )
 
-#region create Input Object with hashtable
-$MyInput = [Input]@{
-    name         = 'ConvertTo-JWT'
-    aliases      = 'aliases'
-    label        = 'Creating (encoding) JSON Web Token'
-    type         = 'string'
-    defaultvalue = $null
-    required     = $true
-    helpMarkDown = 'Creating (encoding) JSON Web Token'
-    groupName    = '__AllParameterSets'
-    visibleRule  = $null
-    properties   = $InputProperty
-    options      = $null
+    return [Input]@{
+        name         = $name
+        aliases      = $aliases
+        label        = $label
+        type         = $type
+        defaultvalue = $defaultvalue
+        required     = $required
+        helpMarkDown = $helpMarkDown
+        groupName    = $groupname
+        visibleRule  = $visibleRule
+        properties   = $properties
+        options      = $options
+    }
 }
 #endregion
-
-$MyInputs += $MyInput
-#endregion
-
-#region Create Input Object from Cmdlet
-$Cmdlet = Get-Command -Name Convertfrom-Jwt 
-$Cmdlet.ParameterSets.Parameters | Where-Object { $_.Position -ne '-2147483648' }
-$Cmdlet.Parameters
-[PSCustomObject]@{
-    Name         = $Cmdlet.Name
-    label        = 'Creating (encoding) JSON Web Token'
-    type         = 'string'
-    defaultvalue = $null
-    required     = $true
-    helpMarkDown = 'Creating (encoding) JSON Web Token'
-    groupName    = '__AllParameterSets'
-    visibleRule  = $null
-    properties   = $InputProperty
-    options      = $null
-    
-
-}
-
-[Input]@{
-    name         = 'ConvertTo-JWT'
-    aliases      = 'aliases'
-    label        = 'Creating (encoding) JSON Web Token'
-    type         = 'string'
-    defaultvalue = $null
-    required     = $true
-    helpMarkDown = 'Creating (encoding) JSON Web Token'
-    groupName    = '__AllParameterSets'
-    visibleRule  = $null
-    properties   = $InputProperty
-    options      = $null
-}
-
-
-#endregion
-
-
-#region create new ExtensionTask
-$NewExtensionTask = [ExtensionTask]@{
-    id           = ((New-Guid).Guid)
-    name         = 'JWT-Demo'
-    friendlyName = 'CCoE Demo Azure Storage Account'
-    description  = 'The CCoE Demo certified Azure Storage Account'
-    helpMarkDown = 'Use this release task to deploy a Storage Account as a certified service.'
-    category     = 'Deploy'
-    visibility   = 'Release'
-    author       = 'Stefan Stranger'
-    version      = "1.0.0"
-    inputs       = $MyInputs
-}
-#endregion
-
-$NewExtensionTask | ConvertTo-Json
-
-
