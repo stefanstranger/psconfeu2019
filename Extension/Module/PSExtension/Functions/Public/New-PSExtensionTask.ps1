@@ -1,4 +1,11 @@
-using module ..\..\PSExtension.psm1
+<#
+    Steps:
+    1. Retrieve Cmdlet Parameters
+    2. Create Input Properties per parameter
+    3. Create Extension Task
+
+#>
+
 #region create Input Objects
 
 #region create InputObjectProperty
@@ -46,21 +53,19 @@ $MyInputs += $MyInput
 
 #region Create Input Object from Cmdlet
 $Cmdlet = Get-Command -Name Convertfrom-Jwt 
-$Cmdlet.ParameterSets.Parameters | Where-Object { $_.Position -ne '-2147483648' }
-$Cmdlet.Parameters
+$Parameters = $Cmdlet.ParameterSets.Parameters | Where-Object { $_.Position -ne '-2147483648' }
+$Help = Get-Help -Name ConvertFrom-JWT
 [PSCustomObject]@{
-    Name         = $Cmdlet.Name
-    label        = 'Creating (encoding) JSON Web Token'
-    type         = 'string'
+    Name         = $Parameters.Name
+    label        = $Help.description.text
+    type         = $($Parameters.ParameterType).Name
     defaultvalue = $null
     required     = $true
-    helpMarkDown = 'Creating (encoding) JSON Web Token'
+    helpMarkDown = $Help.details.description.text
     groupName    = '__AllParameterSets'
     visibleRule  = $null
     properties   = $InputProperty
     options      = $null
-    
-
 }
 
 [Input]@{
