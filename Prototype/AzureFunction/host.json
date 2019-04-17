@@ -1,4 +1,14 @@
 {
-    "version":  "2.0",
-    "functions": ["GetGroup","NewGroup","RemoveGroup"]
+    "version": "2.0",
+    "functions": [
+        "GetGroup",
+        "NewGroup",
+        "RemoveGroup"
+    ],
+    "logging": {
+        "logLevel": {
+            "Function.NewGroup": "Debug",
+            "default": "Trace"
+        }
+    }
 }
