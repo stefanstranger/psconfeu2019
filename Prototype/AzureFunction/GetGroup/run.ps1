@@ -15,30 +15,6 @@ if (-not $DisplayName) {
 if ($DisplayName) {
     $status = [HttpStatusCode]::OK
      
-    <#
-    #region Authenticate
-    $TokenEndpoint = ('https://login.microsoftonline.com/{0}/oauth2/v2.0/token' -f $env:tenantid )
-
-    $Body = @{
-        'client_id'     = $env:ClientID
-        'grant_type'    = 'client_credentials'
-        'client_secret' = $env:ClientSecret
-        'scope'         = 'https://graph.microsoft.com/.default'
-    }
-
-    $params = @{
-        ContentType = 'application/x-www-form-urlencoded'
-        Headers     = @{'accept' = 'application/json' }
-        Body        = $Body
-        Method      = 'Post'
-        URI         = $TokenEndpoint
-    }
-
-    $Body = Invoke-RestMethod @params
-    #endregion
-    #>
-
-
     #region Check if Group Exists
     $params = @{
         'DisplayName'  = $DisplayName
