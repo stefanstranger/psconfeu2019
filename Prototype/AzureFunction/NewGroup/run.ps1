@@ -52,7 +52,7 @@ if ($DisplayName -and $Description -and $MailNickName -and $UserPrincipalName -a
         'Verbose'           = $true
     }
     
-    New-AADGroup @params
+    $Body = New-AADGroup @params
     #endregion
 
 }
