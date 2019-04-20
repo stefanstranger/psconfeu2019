@@ -22,7 +22,6 @@ Add-AzAccount -Tenant $Tenantid
 #region retrieve current context
 Write-Output -InputObject ('Retrieve current context')
 $Context = Get-AzContext
-$Context | convertto-json
 #endregion
 
 #region retrieve Access Token
@@ -72,7 +71,7 @@ $Graph.AppRoles
 #endregion
 
 #region Get Managed Identity Object ID
-Get-ServicePrincipal -Token $AccessToken -TenantDomain $tenantdomainName -ApiVersion $apiversion | Where-Object { $_.DisplayName -eq 'psconfeu2019' } -OutVariable ManagedIdentity
+Get-ServicePrincipal -Token $AccessToken -TenantDomain $tenantdomainName -ApiVersion $apiversion | Where-Object { $_.DisplayName -eq 'psconfeu2019' } -OutVariable ManagedIdentity -Verbose
 #endregion
 
 #region Get Managed Identity Role Assignments
@@ -108,7 +107,7 @@ function Get-MIAppRoleAssignment {
     }
 }
 
-Get-MIAppRoleAssignment -Token $AccessToken -TenantId $tenantid -ObjectId $($ManagedIdentity.ObjectId) -OutVariable result
+Get-MIAppRoleAssignment -Token $AccessToken -TenantId $tenantid -ObjectId $($ManagedIdentity.ObjectId) -OutVariable result -Verbose
 $result | Select-Object -ExpandProperty value
 #endregion
 
@@ -121,16 +120,21 @@ $DelegatedPermissions = $Graph.oauth2Permissions | Where-Object { $_.userconsent
 function Set-MIAppRoleAssignment {
     [CmdletBinding()]
     param (
-        # ObjectID for Service Principal.
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true)]
-        [string]$ObjectId,
+        [string]$Token,
+
+        # The unique identifier (objectId) for the target resource (service principal) for which the assignment was made.
+        [Parameter(Mandatory = $true,
+            ValueFromPipeline = $true)]
+        [string]$ResourceID,
+
+        # The unique identifier (objectId) for the principal being granted the access. 
+        [Parameter(Mandatory = $true,
+            ValueFromPipeline = $true)]
+        [string]$PrincipalId,
 
         # RoleAssignmentID.
-        [Parameter(Mandatory = $true,
-            ValueFromPipeline = $true)]
-        [string]$ObjectId,
-
         [Parameter(Mandatory = $true,
             ValueFromPipeline = $true)]
         [string]$RoleAssignmentID,
@@ -147,16 +151,16 @@ function Set-MIAppRoleAssignment {
     )
     
     begin {
-        $Uri = ('https://graph.windows.net/{0}/{1}/{2}/appRoleAssignments?api-version={3}' -f $tenantDomain, 'users', $UserObjectID, $apiversion)
+        $Uri = ('https://graph.windows.net/{0}/{1}/{2}/appRoleAssignments?api-version={3}' -f $tenantDomain, 'servicePrincipals', $PrincipalID, $apiversion)
         Write-Verbose -Message ('uri: {0}' -f $uri)
     }
     
     process {        
  
         $Body = @{
-            'id'          = $RoleAssignmentID
-            'resourceid'  = $ObjectId
-            'principalid' = $UserObjectID
+            'id'          = $RoleAssignmentID # Role Assignment ID. Example: Directory.Read.All 7ab1d382-f21e-4acd-a863-ba3e13f7da6
+            'resourceid'  = $ResourceID # AppId of the Graph Service Principal
+            'principalid' = $PrincipalID # The unique identifier (id) for the principal being granted the access (Managed Identity id)
         } | ConvertTo-Json
  
 
@@ -178,4 +182,16 @@ function Set-MIAppRoleAssignment {
     end {
     }
 }
+
+
+#Iterate Role Permissions and set Role Permission
+Foreach ($AppPermission in $ApplicationPermissions) {
+    Set-MIAppRoleAssignment -token $AccessToken -ResourceID $Graph.appId -RoleAssignmentID $AppPermission.id -PrincipalId $ManagedIdentity.ObjectId -tenantDomain $tenantdomainName -ApiVersion $apiversion -Verbose
+}
+
+Foreach ($DelegatedPermission in $DelegatedPermissions) {
+    Set-MIAppRoleAssignment -token $AccessToken -ObjectId $ManagedIdentity.objectid -RoleAssignmentID $DelegatedPermission.id -tenantDomain $tenantdomainName -ApiVersion $apiversion
+}
+
+
 #endregion
