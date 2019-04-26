@@ -9,5 +9,10 @@
     "tfx-cli": "^0.6.4",
     "vss-web-extension-sdk": "^5.141.0"
   },
-  "author": "Stefan Stranger - Microsoft"
+  "author": "Stefan Stranger - Microsoft",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stefanstranger/psconfeu2019.git"
+  },
+  "license": "Apache-2.0"
 }
