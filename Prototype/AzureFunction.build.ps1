@@ -31,6 +31,10 @@ task start {
 }
 #endregion
 
+#region Publish Azure Function
+
+#endregion
+
 #region Task clean up ps_modules folder and dist folder and content
 task Clean {
     # Clean ps_modules folder
