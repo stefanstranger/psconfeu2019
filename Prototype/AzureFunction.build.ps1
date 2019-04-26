@@ -9,6 +9,7 @@
 #>
 #region variables
 $script:AzureFunctionPath = ( '{0}\{1}' -f $PSScriptRoot, 'AzureFunction')
+$script:AzureFunctionName = 'psconfeu2019'
 #endregion
 
 #region use the most strict mode
@@ -32,7 +33,9 @@ task start {
 #endregion
 
 #region Publish Azure Function
-
+task publish {
+    exec { Set-Location .\AzureFunction; func azure functionapp publish ( { 0 } -f $script:AzureFunctionName) }
+}
 #endregion
 
 #region Task clean up ps_modules folder and dist folder and content
@@ -47,5 +50,5 @@ task Clean {
 #endregion
 
 #region Default task
-task . Clean, Modules
+task . Clean, modules, start
 #endregion
