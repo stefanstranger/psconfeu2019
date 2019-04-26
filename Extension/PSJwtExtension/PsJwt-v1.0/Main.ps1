@@ -29,19 +29,18 @@ switch ($action) {
     }
     "convertto" {
         Write-Verbose "Get PayLoad and Secret"
-        $PayLoad = Get-VstsInput -Name PayLoad -Require
+        $PayLoad = Get-VstsInput -Name Payload -Require
         $Secret = Get-VstsInput -Name Secret -Require
 
         #region Verbose Output for input fields
         Write-Verbose -Message ('Input fields are:')
         Write-Verbose -Message ('Action: {0}' -f $Action)
-        Write-Verbose -Message ('PayLoad: {0}' -f $PayLoad)
+        Write-Verbose -Message ('PayLoad: {0}' -f $Payload)
         Write-Verbose -Message ('Secret: {0}' -f $Secret)
         #endregion
 
         Write-Host "Encode JSON Web Token"
-        ConvertTo-JWT -PayLoad $Payload -Secret $Secret  
-       
+        ConvertTo-JWT -PayLoad $Payload -Secret $Secret         
     }
     default {
         throw 'Unknow action'
