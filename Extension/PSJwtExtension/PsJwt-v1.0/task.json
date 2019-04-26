@@ -65,7 +65,7 @@
       "label": "Payload",
       "required": true,
       "groupName": "PSJwt",
-      "helpMarkDown": "Payload. Example: {"FirstName":"Stefan","LastName":"Stranger"} ",
+      "helpMarkDown": "Payload. Example: {\"FirstName\":\"Stefan\",\"LastName\":\"Stranger\"}",
       "visibleRule": "action = convertto"
     },
     {
