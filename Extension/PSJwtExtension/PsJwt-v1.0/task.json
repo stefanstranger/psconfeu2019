@@ -12,7 +12,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 2
+    "Patch": 3
   },
   "preview": "true",
   "instanceNameFormat": "JSON Web Token Extension Demo",
@@ -51,13 +51,31 @@
       }
     },
     {
-      "name": "token",
+      "name": "Token",
       "type": "string",
       "label": "token",
       "required": true,
       "groupName": "PSJwt",
       "helpMarkDown": "JSON Web token",
       "visibleRule": "action = convertfrom"
+    },
+    {
+      "name": "Payload",
+      "type": "string",
+      "label": "payload",
+      "required": true,
+      "groupName": "PSJwt",
+      "helpMarkDown": "Payload <hashtable>",
+      "visibleRule": "action = convertto"
+    },
+    {
+      "name": "Secret",
+      "type": "string",
+      "label": "secret",
+      "required": true,
+      "groupName": "PSJwt",
+      "helpMarkDown": "Secret",
+      "visibleRule": "action = convertto"
     }
   ],
   "execution": {

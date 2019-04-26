@@ -38,6 +38,9 @@ switch ($action) {
         Write-Verbose -Message ('PayLoad: {0}' -f $PayLoad)
         Write-Verbose -Message ('Secret: {0}' -f $Secret)
         #endregion
+
+        Write-Host "Encode JSON Web Token"
+        ConvertTo-JWT -PayLoad $Payload -Secret $Secret  
        
     }
     default {
