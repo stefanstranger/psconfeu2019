@@ -28,13 +28,13 @@ task modules {
 
 #region start azure function
 task start {
-    exec { Set-Location .\AzureFunction; func start }
+    exec { Set-Location .\AzureFunction; Invoke-Expression ('func {0}' -f 'start') }
 }
 #endregion
 
 #region Publish Azure Function. NOT WORKING
 task publish {
-    exec { Set-Location .\AzureFunction; func azure functionapp publish psconfeu2019 }
+    exec { Set-Location .\AzureFunction; Invoke-Expression ('func azure functionapp publish {0}' -f $AzureFunctionName) }
 }
 #endregion
 
