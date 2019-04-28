@@ -39,7 +39,7 @@ task publish {
 #endregion
 
 #region Task clean up ps_modules folder and dist folder and content
-task Clean {
+task clean {
     # Clean ps_modules folder
     if ((Test-Path ("$AzureFunctionPath\Modules"))) {
 
@@ -50,5 +50,5 @@ task Clean {
 #endregion
 
 #region Default task
-task . Clean, modules, start
+task . clean, modules, publish
 #endregion
