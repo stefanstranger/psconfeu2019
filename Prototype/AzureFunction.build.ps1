@@ -32,9 +32,9 @@ task start {
 }
 #endregion
 
-#region Publish Azure Function
+#region Publish Azure Function. NOT WORKING
 task publish {
-    exec { Set-Location .\AzureFunction; func azure functionapp publish ( { 0 } -f $script:AzureFunctionName) }
+    exec { Set-Location .\AzureFunction; func azure functionapp publish psconfeu2019 }
 }
 #endregion
 

@@ -1,7 +1,11 @@
+#region Get Azure Function URLs
+$ResourceGroupName = 'psconfeu2019-rg'
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/GetGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable GetGroup
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/NewGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable NewGroup
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/RemoveGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable RemoveGroup
+#endregion
+
 #region Variables
-$GetGroupCode = '6i4bwvTLa/xaak5QqeSQ3GoWAooMpbzX11/Weuy6GpXnbljCcTachA=='
-$RemoveGroupCode = 'Fh9JI9cE4F5mI2NLXV46G3dbYtWUt9UI7elceQCAduFVQneNKnbNww=='
-$NewGroupCode = '9qKwpNOHnto/5luzzeM6m1bfBcnAXoy4rh3sr5H0pCvfQ1xQhuBgbA=='
 $DisplayName = 'PSConfEu-Demo-Group'
 $Description = 'PSConfEu Demo Group'
 $MailNickName = 'psconfeudemogroup'
@@ -10,7 +14,7 @@ $Members = 'janedoe@sstranger.onmicrosoft.com'
 #endregion
 
 #region Retrieve AAD Group via Azure Function
-Invoke-RestMethod -Method Get -Uri ('https://psconfeu2019.azurewebsites.net/api/getgroup?code={0}&Displayname={1}' -f $GetGroupCode, $DisplayName)
+Invoke-RestMethod -Method Get -Uri ('{0}&Displayname={1}' -f $GetGroup.trigger_url, $DisplayName)
 #endregion
 
 #region Create AAD Group local development
@@ -38,7 +42,7 @@ $params = @{
     Headers     = @{'accept' = 'application/json' }
     Body        = $Body
     Method      = 'Post'
-    URI         = ('https://psconfeu2019.azurewebsites.net/api/newgroup?code={0}&DisplayName={1}&Description={2}&MailNickName={3}&UserPrincipalName={4}&Members={5}' -f $NewGroupCode, $DisplayName, $Description, $MailNickName, $UserPrincipalName, $Members)
+    URI         = ('{0}&DisplayName={1}&Description={2}&MailNickName={3}&UserPrincipalName={4}&Members={5}' -f $NewGroup.trigger_url, $DisplayName, $Description, $MailNickName, $UserPrincipalName, $Members)
 }
 
 Invoke-RestMethod @params
@@ -49,7 +53,7 @@ $params = @{
     ContentType = 'application/x-www-form-urlencoded'
     Headers     = @{'accept' = 'application/json' }
     Method      = 'Post'
-    URI         = ('https://psconfeu2019.azurewebsites.net/api/removegroup?code={0}&DisplayName={1}' -f $RemoveGroupCode, $DisplayName)
+    URI         = ('{0}&DisplayName={1}' -f $RemoveGroup.trigger_url, $DisplayName)
 }
 
 Invoke-RestMethod @params
