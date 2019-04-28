@@ -1,16 +1,16 @@
-#region Get Azure Function URLs
-$ResourceGroupName = 'psconfeu2019-rg'
-Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/GetGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable GetGroup
-Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/NewGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable NewGroup
-Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/RemoveGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable RemoveGroup
-#endregion
-
 #region Variables
 $DisplayName = 'PSConfEu-Demo-Group'
 $Description = 'PSConfEu Demo Group'
 $MailNickName = 'psconfeudemogroup'
 $UserPrincipalName = 'johndoe@sstranger.onmicrosoft.com'
 $Members = 'janedoe@sstranger.onmicrosoft.com'
+$ResourceGroupName = 'psconfeu2019-rg'
+#endregion
+
+#region Get Azure Function URLs
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/GetGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable GetGroup
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/NewGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable NewGroup
+Invoke-AzResourceAction -ResourceGroupName $ResourceGroupName -ResourceType 'Microsoft.Web/sites/functions' -ResourceName 'psconfeu2019/RemoveGroup' -Action listsecrets -ApiVersion '2018-02-01' -Force -OutVariable RemoveGroup
 #endregion
 
 #region Retrieve AAD Group via Azure Function
