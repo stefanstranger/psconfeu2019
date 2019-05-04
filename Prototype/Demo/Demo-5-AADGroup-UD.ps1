@@ -48,7 +48,7 @@ $Endpoints += New-UDEndpoint -Url "/getgroup" -Method "GET" -Endpoint {
                 mailNickName    = $_.mailNickName
                 renewedDateTime = $_.renewedDateTime
                 securityEnabled = $_.securityEnabled
-            } }  | ConvertTo-Json
+            } } | ConvertTo-Json
         #endregion
     }
     Catch {
