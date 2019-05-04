@@ -32,7 +32,7 @@ task start {
 }
 #endregion
 
-#region Publish Azure Function. NOT WORKING
+#region Publish Azure Function.
 task publish {
     exec { Set-Location .\AzureFunction; Invoke-Expression ('func azure functionapp publish {0}' -f $AzureFunctionName) }
 }
