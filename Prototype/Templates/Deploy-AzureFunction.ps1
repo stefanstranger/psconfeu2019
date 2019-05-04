@@ -9,7 +9,6 @@ $ARMTemplateParameterFile = 'C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prot
 #region Login
 Get-AzContext
 Disconnect-AzAccount
-
 Add-Azaccount -Subscription $SubscriptionName
 #endregion
 
