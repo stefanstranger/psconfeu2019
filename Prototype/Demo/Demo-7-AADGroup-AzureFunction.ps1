@@ -5,7 +5,6 @@ $MailNickName = 'psconfeudemogroup'
 $UserPrincipalName = 'johndoe@sstranger.onmicrosoft.com'
 $Members = 'janedoe@sstranger.onmicrosoft.com'
 $ResourceGroupName = 'psconfeu2019-rg'
-$Location = 'westeurope'
 #endregion
 
 #region Get Azure Function URLs
