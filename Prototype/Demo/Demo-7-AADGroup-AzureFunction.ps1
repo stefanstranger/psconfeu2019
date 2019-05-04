@@ -5,6 +5,7 @@ $MailNickName = 'psconfeudemogroup'
 $UserPrincipalName = 'johndoe@sstranger.onmicrosoft.com'
 $Members = 'janedoe@sstranger.onmicrosoft.com'
 $ResourceGroupName = 'psconfeu2019-rg'
+$Location = 'westeurope'
 #endregion
 
 #region Get Azure Function URLs
@@ -57,4 +58,10 @@ $params = @{
 }
 
 Invoke-RestMethod @params
+#endregion
+
+#region Remove Resource Group
+if (Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue) {
+    Remove-AzResourceGroup -Name $ResourceGroupName
+}
 #endregion
