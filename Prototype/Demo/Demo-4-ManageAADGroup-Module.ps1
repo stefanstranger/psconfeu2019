@@ -10,7 +10,7 @@ $DisplayName = 'PSConfEu-Demo-Group'
 #endregion
 
 #region Import ManageAADGroup Module
-Import-Module ..\Module\ManageAADGroup -verbose
+Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Module\ManageAADGroup -verbose
 #endregion
 
 #region Create AAD Security Group
