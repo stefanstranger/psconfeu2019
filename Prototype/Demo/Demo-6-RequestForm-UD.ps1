@@ -1,6 +1,11 @@
 <#
     Demo Request form calling REST API
 
+    Open webbrowser http://localhost:80 and enter the following values in the fields
+    'Email Address'       = 'johndoe@sstranger.onmicrosoft.com'
+    'Group Name'       = 'PPSConfEu-Demo-Group'
+    'Members'           = 'janedoe@sstranger.onmicrosoft.com'
+
     Remark: Make sure the REST API is running
 #>
 
