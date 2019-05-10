@@ -1,0 +1,98 @@
+
+#################################################
+Demo notes - PowerShell for prototyping
+#################################################
+
+- DON'T FORGET to switch VSCode theme to PowerShell ISE.
+  F1 - Preferences - Color Theme
+
+- DON'T FORGET to collapse all regions in demo scripts
+
+#################################################
+Demo 1 - Polaris - 5 minutes
+#################################################
+
+Simple example of an API (listening on port 8585) returning running Processes on localhost
+
+- Open Demo-01-Polaris.ps1 script
+
+#################################################
+Demo 2 - Universal Dashboard - 5 minutes
+#################################################
+
+Simple example of an API (listening on port 8686) returning running Processes on localhost
+
+#################################################
+Demo 3 - Graph API demo - 5 minutes
+#################################################
+
+Create an Azure Active Directory Security Group with the Graph API Example
+
+DON'T FORGET to explain Service Principal Graph API permissions
+DON'T FORGET to open Azure Active Directory in Azure Portal
+
+- Open Azure Active Directory in Azure Portal
+- Run Demo-3-CreateAADGroup-GraphAPI.ps1
+
+#################################################
+Demo 4 - ManageAAD Group Module demo - 5 minutes
+#################################################
+
+ManageAAD Group PowerShell module is a wrapper module on the Graph API for managing Active Directory Groups.
+
+- Run Demo-04-ManageAADGroup-Module.ps1
+
+#################################################
+Demo 5 - Universal Dashboard Manage AAD Group REST API - 5 minutes
+#################################################
+
+Show that using UD you can create 3 REST API Endpoints to manage AAD Groups
+
+- Run Demo-5-AADGroup-UD.ps1
+
+#################################################
+Demo 6 - Request form calling REST API - 5 minutes
+#################################################
+
+Show that you can create a Request Dashboard wherefrom you can call the AD Rest API
+
+- Run Demo-6-RequestForm-UD.ps1
+
+Open webbrowser http://localhost:80 and enter the following values in the fields
+    'Email Address' = 'johndoe@sstranger.onmicrosoft.com'
+    'Group Name'    = 'PSConfEu-Demo-Group'
+    'Members'       = 'janedoe@sstranger.onmicrosoft.com'
+
+#################################################
+Demo 7 - ARM deployment of Azure Function - 5 minutes
+#################################################
+
+Show how to deploy an Azure Function using ARM Template.
+
+DON'T FORGET to already login with Azure Subscription.
+
+REMARK: Maybe it saves time to skip the deployment of an Azure Function and have that already deployed.
+
+
+#################################################
+Demo 8 - Show Azure Function Code - 5 minutes
+#################################################
+
+Show how to use the ManageAADGroup PowerShell module in a PowerShell Azure Function.
+
+#################################################
+Demo 9 - Publish PowerShell Azure Function - 5 minutes
+#################################################
+
+Use the invoke-build script to build and publish the Azure Function
+
+Run invoke-build default task
+
+#################################################
+Demo 10 - Demo PowerShell Azure Function - 5 minutes
+#################################################
+
+Run Demo-7-AADGroup-AzureFunction.ps1
+
+
+
