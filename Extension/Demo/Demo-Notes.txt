@@ -1,0 +1,24 @@
+
+#####################################################
+Demo notes - Extend PowerShell Skills with Extensions
+#####################################################
+
+- DON'T FORGET to switch VSCode theme to PowerShell ISE.
+  F1 - Preferences - Color Theme
+
+- DON'T FORGET to collapse all regions in demo scripts
+
+
+#####################################################
+Demo 1 - PSJwt Module - 5 minutes
+#####################################################
+
+Demo the functions in the PSJt PowerShell Module
+
+#####################################################
+Demo 2 - PSJwt Extension Pipeline - 10 minutes
+#####################################################
+
+Demo the PSJwt Extension Pipeline in Azure DevOps.
+
+
