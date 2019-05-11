@@ -69,7 +69,7 @@ task InstallNodeModules {
 }
 #endregion
 
-#region Task Create Extension. Don't update Extension version.
+#region Task Create Extension.
 task CreateExtension {
     exec { tfx.cmd extension create --root ("$PSScriptRoot") --output-path ("$PSScriptRoot\dist") --manifest-globs vss-extension.json --override ('{{\"version\": \"{0}\"}}' -f $script:newVersion) --trace-level debug } 
 }
@@ -152,5 +152,5 @@ task Clean {
 #endregion
 
 #region Default task
-task . Clean, ps_modules, CreateExtension
+task . Clean, ps_modules, BuildCreateExtension
 #endregion

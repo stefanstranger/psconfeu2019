@@ -21,4 +21,24 @@ Demo 2 - PSJwt Extension Pipeline - 10 minutes
 
 Demo the PSJwt Extension Pipeline in Azure DevOps.
 
+DON'T FORGET to show action list (ConvertFrom/ConvertTo)
+
+#####################################################
+Demo 3 - Show artifacts of PSJwtExtension - 10 minutes
+#####################################################
+
+Show:
+- Extension Manifest and task files
+  - Task.json
+- Main.ps1
+  - Show VSTS Commandlets 
+    (Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\ps_modules\VstsTaskSdk\VstsTaskSdk.psd1 -Verbose)
+- ps_modules
+
+#####################################################
+Demo 4 - Package Extension - 5 minutes
+#####################################################
+
+Demo how to package the extension using the build tasks
+
 

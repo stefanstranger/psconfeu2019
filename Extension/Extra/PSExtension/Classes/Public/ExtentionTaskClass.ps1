@@ -145,7 +145,7 @@ Class ExtensionTask {
 
 #region New Input Property Function
 Function New-InputPropertyObject {
-    [CmdletBInding()]
+    [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $true)]
         [boolean]$Exist
@@ -157,7 +157,7 @@ Function New-InputPropertyObject {
 
 #region New Input Object Function
 Function New-InputObject {
-    [CmdletBInding()]
+    [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $true)]
         [string]$name,
