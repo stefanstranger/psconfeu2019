@@ -34,17 +34,18 @@ Function ConvertTo-Task {
 
     #region retrieve Module info
     if (!(Get-Module -Name $Name)) {
+        Write-Verbose -Message ('Import PowerShell Module {0}' -f $Name)
         Import-Module -Name $Name
-        $script:ModuleInfo = Get-Module -Name $Name
+        $ModuleInfo = Get-Module -Name $Name
     }
     #endregion
 
     #region Create new Task Objects
-    $Script:Task = New-ExtensionTask
+    $Task = New-ExtensionTask
     #endregion
 
     #region Create Group Ojects
-    $Script:Groups = New-TaskGroup
+    $Task.Groups = New-TaskGroup
     #endregion
 
     #region Create Input Objects
@@ -54,4 +55,9 @@ Function ConvertTo-Task {
     $Task | ConvertTo-Json -Depth 10
     #endregion
 
+    #region validate Task Json with schema
+    $Schema = (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/microsoft/azure-pipelines-task-lib/master/tasks.schema.json').Content
+    Test-Json -Json ( $Task | ConvertTo-Json -Depth 3 | out-string) -Schema $Schema -ErrorVariable jsontest -ErrorAction SilentlyContinue
+    ($jsontest.errordetails)
+    #endregion
 }
