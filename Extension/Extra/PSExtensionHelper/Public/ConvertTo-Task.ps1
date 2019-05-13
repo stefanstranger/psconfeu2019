@@ -36,7 +36,7 @@ Function ConvertTo-Task {
     if (!(Get-Module -Name $Name)) {
         Write-Verbose -Message ('Import PowerShell Module {0}' -f $Name)
         Import-Module -Name $Name
-        $ModuleInfo = Get-Module -Name $Name
+        $Global:ModuleInfo = Get-Module -Name $Name
     }
     #endregion
 
@@ -45,7 +45,8 @@ Function ConvertTo-Task {
     #endregion
 
     #region Create Group Ojects
-    $Task.Groups = New-TaskGroup
+    $Global:Groups = New-TaskGroup
+    $Task.Groups = $Groups
     #endregion
 
     #region Create Input Objects

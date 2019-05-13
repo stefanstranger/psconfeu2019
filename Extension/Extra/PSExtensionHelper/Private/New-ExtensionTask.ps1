@@ -9,8 +9,12 @@ Function New-ExtensionTask {
         category           = [string] $category
         visibility         = [string[]] $visibility
         author             = [string] $author
-        version            = [version] $version
-        preview            = [string] $preview
+        version            = [PSCustomObject]@{
+            Major = [int]$Version.Split('.')[0]
+            Minor = [int]$Version.Split('.')[1]
+            Patch = [int]$Version.Split('.')[2]
+        }
+        preview            = [boolean] $preview
         demands            = [string] $demands
         instanceNameFormat = [string] $instanceNameFormat
         groups             = [string[]]$groups
@@ -20,6 +24,6 @@ Function New-ExtensionTask {
                 target = 'Main.ps1'
             }
         }
-    }   
+    }
     #endregion
 }
