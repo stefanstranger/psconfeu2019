@@ -5,16 +5,13 @@
   "description": "JSON Web Token Extension Demo for PowerShell Conference EU 2019",
   "helpMarkDown": "Use this task to decode or create a JSON Web Token",
   "category": "Deploy",
-  "visibility": [
-    "Release"
-  ],
   "author": "Stefan Stranger",
   "version": {
     "Major": 1,
     "Minor": 0,
     "Patch": 6
   },
-  "preview": "true",
+  "preview": true,
   "instanceNameFormat": "JSON Web Token Extension Demo",
   "groups": [
     {

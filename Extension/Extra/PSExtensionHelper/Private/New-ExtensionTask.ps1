@@ -3,9 +3,9 @@ Function New-ExtensionTask {
     return [PSCustomObject]@{
         id                 = $(New-Guid).Guid 
         name               = [string] $name
-        friendlyname       = [string] $friendlyname
+        friendlyName       = [string] $friendlyname
         description        = [string] $description
-        helpMarkdown       = [string] $helpMarkdown
+        helpMarkDown       = [string] $helpMarkdown
         category           = [string] $category
         visibility         = [string[]] $visibility
         author             = [string] $author
