@@ -1,15 +1,23 @@
 Function New-TaskGroup {
 
+    [CmdletBinding()]
+    Param
+    (
+        # PowerShell Module
+        [Parameter(Mandatory = $true,
+            Position = 0)]
+        [PSCustomObject]$Module)
+
     #region create Groups Objects
     $groups = @()
     $DefaultGroup = [PSCustomObject]@{
-        name        = $ModuleInfo.Name
-        displayname = $ModuleInfo.Description
+        name        = $Module.Name
+        displayname = $Module.Description
         isExpanded  = $true
     }
     $groups += $DefaultGroup
     #create a group for each function in the module
-    $ModuleInfo.ExportedCommands.GetEnumerator() | foreach-object {
+    $Module.ExportedCommands.GetEnumerator() | foreach-object {
         #Implement error handling when no help is found
         $groups += [PSCustomObject]@{
             name        = $($_.Key)
