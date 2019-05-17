@@ -5,7 +5,11 @@ Function New-TaskInput {
         # Name of PowerShell Module
         [Parameter(Mandatory = $true,
             Position = 0)]
-        $Name)
+        $Name,
+        # PowerShell Module
+        [Parameter(Mandatory = $true,
+            Position = 0)]
+        [PSCustomObject]$Module)
 
     #region create input objects
     $options = $null
@@ -22,8 +26,8 @@ Function New-TaskInput {
         label        = 'Action'
         defaultvalue = $groups[1].name
         required     = $true
-        groupName    = $ModuleInfo.Name
-        helpMarkDown = ('Choose the action for {0} PowerShell Module' -f $ModuleInfo.Name )
+        groupName    = $Module.Name
+        helpMarkDown = ('Choose the action for {0} PowerShell Module' -f $Module.Name )
         properties   = @{
             EditableOptions = 'False'
         }
