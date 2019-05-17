@@ -6,7 +6,10 @@ param($Request, $TriggerMetadata)
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger GetGroup function processed a request."
 
-Write-Host ('Request Object: {0}' -f ($request | convertto-json))
+# Get TriggerMetadata
+Write-Verbose ($TriggerMetadata | Convertto-Json) -Verbose
+
+Write-Verbose ('Request Object: {0}' -f ($request | convertto-json)) -Verbose
 
 # Interact with query parameters or the body of the request.
 $DisplayName = $Request.Query.DisplayName
