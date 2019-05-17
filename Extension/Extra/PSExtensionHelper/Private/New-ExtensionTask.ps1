@@ -7,7 +7,6 @@ Function New-ExtensionTask {
         description        = [string] $description
         helpMarkDown       = [string] $helpMarkdown
         category           = [string] $category
-        visibility         = [string[]] $visibility
         author             = [string] $author
         version            = [PSCustomObject]@{
             Major = [int]$Version.Split('.')[0]

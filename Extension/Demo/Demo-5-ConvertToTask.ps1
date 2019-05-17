@@ -9,7 +9,6 @@ $params = @{
     TaskName           = 'JWT-Demo'
     Description        = 'JSON Web Token Extension Demo for PowerShell Conference EU 2019'
     Category           = 'Deploy'
-    Visibility         = 'Release'
     Author             = 'Stefan Stranger'
     Version            = '1.0.0'
     Preview            = $true

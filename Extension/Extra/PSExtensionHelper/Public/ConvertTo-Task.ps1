@@ -15,9 +15,6 @@ Function ConvertTo-Task {
         # Category of the ADO Task
         [Parameter(Mandatory = $true)]
         $Category,
-        # Visibility of the ADO Task
-        [Parameter(Mandatory = $true)]
-        $Visibility,
         # Author of the ADO Task
         [Parameter(Mandatory = $true)]
         $Author,
