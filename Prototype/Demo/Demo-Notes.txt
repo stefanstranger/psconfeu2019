@@ -6,7 +6,9 @@ Demo notes - PowerShell for prototyping
 - DON'T FORGET to switch VSCode theme to PowerShell ISE.
   F1 - Preferences - Color Theme
 
-- DON'T FORGET to collapse all regions in demo scripts
+- DON'T FORGET to collapse all regions in demo scripts.
+
+- DON'T FORGET to login to Azure Subscription and open Azure Portal website.
 
 #################################################
 Demo 1 - Polaris - 5 minutes
