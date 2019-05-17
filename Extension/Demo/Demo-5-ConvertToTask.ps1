@@ -1,4 +1,5 @@
 #region Import Module PSExtension
+Remove-Module PSExtensionHelper
 Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\Extra\PSExtensionHelper\PSExtensionHelper.psd1 -verbose
 #endregion
 
@@ -6,19 +7,22 @@ Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\Extra\PSE
 $params = @{
     Name               = 'PSJwt'
     TaskName           = 'JWT-Demo'
-    #FriendlyName       = 'JSON Web Token Extension Demo'    
     Description        = 'JSON Web Token Extension Demo for PowerShell Conference EU 2019'
-    #helpMarkDown       = 'Use this task to decode or create a JSON Web Token'
     Category           = 'Deploy'
     Visibility         = 'Release'
     Author             = 'Stefan Stranger'
     Version            = '1.0.0'
     Preview            = $true
     InstanceNameFormat = 'JSON Web Token Extension Demo'
+    OutFile            = "$env:Temp\task.json"
 }
 #endregion
 
 #region Call Function ConvertTo-Task
-ConvertTo-Task @params -verbose
+ConvertTo-Task @params -Validate
+#endregion
+
+#region open task.json
+. code "$env:Temp\task.json" 
 #endregion
 
