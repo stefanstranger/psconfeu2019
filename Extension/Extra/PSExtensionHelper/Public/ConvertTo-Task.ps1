@@ -61,7 +61,7 @@ Function ConvertTo-Task {
     $Task.Inputs = New-TaskInput -Name $Name -Module $Module
 
     #region output Task.json
-    $Task | ConvertTo-Json -Depth 10 | Out-File $OutFile -Force
+    $Task | ConvertTo-Json -Dept 3 | Out-File $OutFile -Force
     #endregion
 
     #region validate Task Json with schema
