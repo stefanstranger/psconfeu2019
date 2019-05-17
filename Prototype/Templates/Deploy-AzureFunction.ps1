@@ -1,3 +1,8 @@
+<#
+    This script will deploy the Azure Function in an Azure Resource Group
+    Make sure you have already logged in.
+#>
+
 #region variables
 $SubscriptionName = 'Visual Studio Enterprise'
 $ResourceGroupName = 'psconfeu2019-rg'
@@ -6,11 +11,13 @@ $ARMTemplateFile = 'C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Tem
 $ARMTemplateParameterFile = 'C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Templates\azuredeploy.parameters.json'
 #endregion
 
+<#
 #region Login
 Get-AzContext
 Disconnect-AzAccount
 Add-Azaccount -Subscription $SubscriptionName
 #endregion
+#>
 
 #region Resource Group
 if (!(Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue)) {

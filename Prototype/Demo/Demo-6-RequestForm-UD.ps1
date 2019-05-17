@@ -6,7 +6,7 @@
     'Group Name'       = 'PPSConfEu-Demo-Group'
     'Members'           = 'janedoe@sstranger.onmicrosoft.com'
 
-    Remark: Make sure the REST API is running
+    Remark: Make sure the REST API is running!!!
 #>
 
 #region Create new Request Dashboard

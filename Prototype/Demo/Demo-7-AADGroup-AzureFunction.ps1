@@ -1,3 +1,18 @@
+<#
+    Demo how to use the earlier deployed PowerShell for Azure Functions.
+
+    Note:
+    - First deploy the Azure Function with script Deploy-AzureFunction.ps1
+#>
+
+#region Deploy Azure Function with ARM Template
+. code C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Templates\Deploy-AzureFunction.ps1
+#endregion
+
+<#
+    Walkthrough code for PowerShell Azure Function
+#>
+
 #region Variables
 $DisplayName = 'PSConfEu-Demo-Group'
 $Description = 'PSConfEu Demo Group'
