@@ -74,7 +74,7 @@ Function New-TaskInput {
                 type         = "string"
                 label        = $_
                 required     = $true
-                groupName    = $ModuleInfo.Name
+                groupName    = $Module.Name
                 helpMarkDown = $(Get-Help -Name $($Command.Name) -Parameter $($_)).Description.text
                 visibleRule  = ('action = {0}' -f $Command.Name)
             }
