@@ -29,14 +29,20 @@ Function ConvertTo-Task {
         $Preview,
         # InstanceNameFormat of the ADO Task
         [Parameter(Mandatory = $true)]
-        $InstanceNameFormat    
+        $InstanceNameFormat,
+        # OutFile (output file path for task.json)
+        [Parameter(Mandatory = $true)]
+        $OutFile,
+        # OutFile (output file path for task.json)
+        [Parameter(Mandatory = $false)]
+        [Switch]$Validate  
     )
 
     #region retrieve Module info
     if (!(Get-Module -Name $Name)) {
         Write-Verbose -Message ('Import PowerShell Module {0}' -f $Name)
         Import-Module -Name $Name
-        $Global:ModuleInfo = Get-Module -Name $Name
+        $Global:Module = Get-Module -Name $Name
     }
     #endregion
 
@@ -44,21 +50,26 @@ Function ConvertTo-Task {
     $Task = New-ExtensionTask
     #endregion
 
+    #region Configure Task Properties FriendlyName, Description and MarkdownHelp
+    $Task.FriendlyName = ('{0} PowerShell Module for Azure DevOps Extension' -f $Module.Name)
+    $Task.helpMarkdown = $($Module.Description)
+    #endregion
+
     #region Create Group Ojects
-    $Global:Groups = New-TaskGroup
+    $Global:Groups = New-TaskGroup -Module $Module
     $Task.Groups = $Groups
     #endregion
 
     #region Create Input Objects
-    $Task.Inputs = New-TaskInput -Name $Name
+    $Task.Inputs = New-TaskInput -Name $Name -Module $Module
 
     #region output Task.json
-    $Task | ConvertTo-Json -Depth 10
+    $Task | ConvertTo-Json -Depth 10 | Out-File $OutFile -Force
     #endregion
 
     #region validate Task Json with schema
-    $Schema = (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/microsoft/azure-pipelines-task-lib/master/tasks.schema.json').Content
-    Test-Json -Json ( $Task | ConvertTo-Json -Depth 3 | out-string) -Schema $Schema -ErrorVariable jsontest -ErrorAction SilentlyContinue
-    ($jsontest.errordetails)
+    if ($Validate) {
+        Test-Task -Path $OutFile
+    }
     #endregion
 }
