@@ -70,8 +70,4 @@ Function ConvertTo-Task {
     }
     #endregion
 
-    #region clean up
-    Remove-Variable -Name Groups -Force
-    Remove-Variable -Name Module -Force
-    #endregion
 }
