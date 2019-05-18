@@ -22,6 +22,6 @@ ConvertTo-Task @params -Validate
 #endregion
 
 #region open task.json
-. code "$env:Temp\task.json" 
+. code "$env:Temp\task.json"
 #endregion
 

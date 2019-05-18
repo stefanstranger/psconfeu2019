@@ -11,7 +11,7 @@ Function Test-Task {
     #endregion
         
     #region validate task    
-    Test-Json -Json (Get-Content -path $Path | Out-String) -Schema $Schema -ErrorVariable jsontest -ErrorAction SilentlyContinue
+    Test-Json -Json (Get-Content -path $Path -raw) -Schema $Schema -ErrorVariable jsontest -ErrorAction SilentlyContinue
     ($jsontest.errordetails)
     #endregion
 }

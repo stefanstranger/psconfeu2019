@@ -15,7 +15,7 @@ Function New-TaskInput {
     $options = $null
     1..($groups.length - 1) | ForEach-Object {
         $options += @{
-            $($Groups[$_].Name) = $($Groups[$_].displayname)
+            $($Groups[$_].Name) = $($Groups[$_].displayName)
         }
     }
 
@@ -24,14 +24,14 @@ Function New-TaskInput {
         name         = 'action'
         type         = 'pickList'
         label        = 'Action'
-        defaultvalue = $groups[1].name
+        defaultValue = $groups[1].name
         required     = $true
         groupName    = $Module.Name
         helpMarkDown = ('Choose the action for {0} PowerShell Module' -f $Module.Name )
         properties   = @{
             EditableOptions = 'False'
         }
-        option       = $options
+        options      = $options
     }
     $Inputs += $DefaultInput
 

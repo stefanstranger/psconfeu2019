@@ -12,7 +12,7 @@ Function New-TaskGroup {
     $groups = @()
     $DefaultGroup = [PSCustomObject]@{
         name        = $Module.Name
-        displayname = $Module.Description
+        displayName = $Module.Description
         isExpanded  = $true
     }
     $groups += $DefaultGroup
@@ -21,7 +21,7 @@ Function New-TaskGroup {
         #Implement error handling when no help is found
         $groups += [PSCustomObject]@{
             name        = $($_.Key)
-            displayname = $(Get-Help $_.Value).Synopsis
+            displayName = $(Get-Help $_.Value).Synopsis
             isExpanded  = $true
         }
     }

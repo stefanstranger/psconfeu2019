@@ -14,7 +14,6 @@ Function New-ExtensionTask {
             Patch = [int]$Version.Split('.')[2]
         }
         preview            = [boolean] $preview
-        demands            = [string] $demands
         instanceNameFormat = [string] $instanceNameFormat
         groups             = [string[]]$groups
         inputs             = [PSCustomObject[]]$inputs

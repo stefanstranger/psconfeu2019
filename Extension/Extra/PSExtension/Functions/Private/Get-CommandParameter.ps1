@@ -20,7 +20,7 @@ Function Get-CommandParameter {
                 groupName    = '__AllParameterSets'
                 visibleRule  = $null
                 properties   = [InputProperties]::new($false)
-                options      = $null
+                option       = $null
             }
         )
     }
