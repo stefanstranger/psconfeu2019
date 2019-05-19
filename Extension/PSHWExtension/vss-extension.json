@@ -1,0 +1,46 @@
+{
+    "manifestVersion": 1,
+    "id": "PSHW-Demo-Extension",
+    "version": "0.0.0",
+    "name": "PSConfEU Hello WorldDemo Extension",
+    "description": "PSConfEU Hello World Demo Extension",
+    "publisher": "SLVStranger",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Cloud"
+        }
+    ],
+    "icons": {
+        "default": "images/hw-128.png",
+        "large": "images/hw-512.png"
+    },
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "tags": [
+        "Demo"
+    ],
+    "contributions": [
+        {
+            "id": "HW-Demo",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "PsHW-v1.0"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "node_modules/vss-web-extension-sdk/lib",
+            "addressable": true,
+            "packagePath": "lib"
+        },
+        {
+            "path": "PsHW-v1.0",
+            "packagePath": "PsHW-v1.0"
+        }
+    ]
+}
