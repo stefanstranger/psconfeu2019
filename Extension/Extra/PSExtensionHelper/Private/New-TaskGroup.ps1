@@ -20,7 +20,7 @@ Function New-TaskGroup {
     $Module.ExportedCommands.GetEnumerator() | foreach-object {
         #Implement error handling when no help is found
         $groups += [PSCustomObject]@{
-            name        = $($_.Key)
+            name        = $($_.Key).replace('-', '')
             displayName = $(Get-Help $_.Value).Synopsis
             isExpanded  = $true
         }

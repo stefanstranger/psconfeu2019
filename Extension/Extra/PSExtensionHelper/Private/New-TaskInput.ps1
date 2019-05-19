@@ -24,7 +24,7 @@ Function New-TaskInput {
         name         = 'action'
         type         = 'pickList'
         label        = 'Action'
-        defaultValue = $groups[1].name
+        defaultValue = $($groups[1].name).replace('-','')
         required     = $true
         groupName    = $Module.Name
         helpMarkDown = ('Choose the action for {0} PowerShell Module' -f $Module.Name )
@@ -76,7 +76,7 @@ Function New-TaskInput {
                 required     = $true
                 groupName    = $Module.Name
                 helpMarkDown = $(Get-Help -Name $($Command.Name) -Parameter $($_)).Description.text
-                visibleRule  = ('action = {0}' -f $Command.Name)
+                visibleRule  = ('action = {0}' -f $($Command.Name).replace('-', ''))
             }
         }
     }
