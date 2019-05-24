@@ -8,6 +8,8 @@ Demo notes - Extend PowerShell Skills with Extensions
 
 - DON'T FORGET to collapse all regions in demo scripts
 
+- DON'T FORGET to open Azure DevOps.
+  start 'https://dev.azure.com/stefanstranger/PSConfEU%202019/_releaseDefinition?definitionId=1&_a=definition-tasks&environmentId=1'
 
 #####################################################
 Demo 1 - PSJwt Module - 5 minutes
