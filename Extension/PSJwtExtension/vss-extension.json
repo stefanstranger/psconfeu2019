@@ -33,6 +33,11 @@
             }
         }
     ],
+    "content": {
+        "details": {
+            "path": "Marketplace.md"
+        }
+    },
     "files": [
         {
             "path": "node_modules/vss-web-extension-sdk/lib",
