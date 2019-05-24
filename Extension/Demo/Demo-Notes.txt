@@ -7,6 +7,7 @@ Demo notes - Extend PowerShell Skills with Extensions
   F1 - Preferences - Color Theme
 
 - DON'T FORGET to collapse all regions in demo scripts
+  Ctrl + K Ctrl +8
 
 - DON'T FORGET to open Azure DevOps.
   start 'https://dev.azure.com/stefanstranger/PSConfEU%202019/_releaseDefinition?definitionId=1&_a=definition-tasks&environmentId=1'
