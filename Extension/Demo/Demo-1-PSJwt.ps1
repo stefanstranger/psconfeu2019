@@ -1,3 +1,14 @@
+<#
+    DON'T FORGET to collapse all regions in demo scripts
+    Ctrl + K Ctrl +8
+
+    #####################################################
+    Demo 1 - PSJwt Module - 5 minutes
+    #####################################################
+
+    Demo the functions in the PSJt PowerShell Module  
+#>
+
 #region Import PSJwt Module
 Import-Module -Name PSJwt -Verbose
 #endregion
