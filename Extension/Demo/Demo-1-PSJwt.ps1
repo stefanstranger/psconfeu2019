@@ -6,7 +6,7 @@
     Demo 1 - PSJwt Module - 5 minutes
     #####################################################
 
-    Demo the functions in the PSJt PowerShell Module  
+    Demo the functions in the PSJwt PowerShell Module  
 #>
 
 #region Import PSJwt Module
@@ -45,3 +45,5 @@ ConvertTo-Jwt -secret 'qwerty' -OutVariable CustomToken
 
 ConvertFrom-JWT -Token $CustomToken
 #endregion
+
+[timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds(1559202761))
