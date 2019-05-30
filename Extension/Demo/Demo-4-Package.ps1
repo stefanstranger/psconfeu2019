@@ -4,7 +4,6 @@
 
     #####################################################
     Demo 4 - Package Extension - 5 minutes
-Demo 4 - Package Extension - 5 minutes
     #####################################################
 
     Demo how to package the extension using the build tasks

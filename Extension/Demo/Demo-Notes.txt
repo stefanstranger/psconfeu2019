@@ -45,3 +45,10 @@ Demo 4 - Package Extension - 5 minutes
 Demo how to package the extension using the build tasks
 
 
+#####################################################
+Demo 5 - Extension Helper Module - 5 minutes
+#####################################################
+
+Demo how to use the PSExtensionHelper PowerShell Module.
+
+
