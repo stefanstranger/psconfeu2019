@@ -1,5 +1,7 @@
 <#
     ManageAAD Group PowerShell module is a wrapper module on the Graph API for managing Active Directory Groups.
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region variables

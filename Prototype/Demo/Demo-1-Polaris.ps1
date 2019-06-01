@@ -4,6 +4,8 @@
     Link: https://powershell.github.io/Polaris/docs/about_Polaris.html
 
     Simple example of an API (listening on port 8585) returning running Processes on localhost
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region clean up
@@ -31,4 +33,3 @@ Get-PolarisRoute
 Remove-PolarisRoute -path /process
 Stop-Polaris
 #endregion
-

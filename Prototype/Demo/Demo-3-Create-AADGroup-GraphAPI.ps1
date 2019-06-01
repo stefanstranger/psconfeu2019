@@ -1,5 +1,7 @@
 <#
     Create an Azure Active Directory Security Group with the Graph API Example 
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region variables
@@ -20,7 +22,7 @@ $Body = @{
 
 $params = @{
     ContentType = 'application/x-www-form-urlencoded'
-    Headers     = @{'accept' = 'application/json'}
+    Headers     = @{'accept' = 'application/json' }
     Body        = $Body
     Method      = 'Post'
     URI         = $TokenEndpoint

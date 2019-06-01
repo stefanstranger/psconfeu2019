@@ -2,7 +2,10 @@
     Demo how to use the earlier deployed PowerShell for Azure Functions.
 
     Note:
+    - Go back to PPT slides first for some background info on Azure Functions.
     - First deploy the Azure Function with script Deploy-AzureFunction.ps1
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region Deploy Azure Function with ARM Template
@@ -12,6 +15,11 @@
 <#
     Walkthrough code for PowerShell Azure Function
 #>
+
+#region Publish Azure Function
+. code ..\AzureFunction.build.ps1
+Invoke-Build ..\AzureFunction.build.ps1 -Task .
+#endregion
 
 #region Variables
 $DisplayName = 'PSConfEu-Demo-Group'
@@ -84,4 +92,8 @@ Invoke-RestMethod @params
 if (Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue) {
     Remove-AzResourceGroup -Name $ResourceGroupName
 }
+#endregion
+
+#region Clean Azure Function
+Invoke-Build ..\AzureFunction.build.ps1 -Task Clean
 #endregion

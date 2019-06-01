@@ -7,6 +7,8 @@
     http://localhost:8080/api/removegroup?displayname=PSConfEu-Demo-Group
 
     http://localhost:8080/api/newgroup?displayname=PSConfEu-Demo-Group&description=PSConfEu%20Demo%20Group&mailnickname=psconfeudemogroup&userprincipalname=johndoe@sstranger.onmicrosoft.com&members=janedoe@sstranger.onmicrosoft.com
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region Import Universal Dashboard Community PowerShell Module

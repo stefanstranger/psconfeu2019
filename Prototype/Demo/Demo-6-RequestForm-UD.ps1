@@ -7,6 +7,8 @@
     'Members'           = 'janedoe@sstranger.onmicrosoft.com'
 
     Remark: Make sure the REST API is running!!!
+
+    Collapse regions - Ctrl K + Ctrl 8
 #>
 
 #region Create new Request Dashboard
