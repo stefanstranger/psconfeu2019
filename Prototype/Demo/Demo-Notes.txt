@@ -12,6 +12,8 @@ Demo notes - PowerShell for prototyping
 
 - DON'T FORGET to enable Az Mask extension.
 
+- DON'T FORGET to deploy Azure Function Web App in advance.
+
 #################################################
 Demo 1 - Polaris - 5 minutes
 #################################################
