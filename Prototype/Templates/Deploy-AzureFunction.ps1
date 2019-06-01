@@ -11,13 +11,11 @@ $ARMTemplateFile = 'C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Tem
 $ARMTemplateParameterFile = 'C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\Templates\azuredeploy.parameters.json'
 #endregion
 
-<#
 #region Login
 Get-AzContext
 Disconnect-AzAccount
 Add-Azaccount -Subscription $SubscriptionName
 #endregion
-#>
 
 #region Resource Group
 if (!(Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue)) {
@@ -25,6 +23,6 @@ if (!(Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue
 }
 #endregion
 
-#region deploy Azure Function
-New-AzResourceGroupDeployment -Name 'psconfeu2019' -ResourceGroupName $ResourceGroupName -TemplateFile $ARMTemplateFile -TemplateParameterFile $ARMTemplateParameterFile -Mode Incremental
+#region deploy Azure Function. Added whatif to prevent time loss.
+New-AzResourceGroupDeployment -Name 'psconfeu2019' -ResourceGroupName $ResourceGroupName -TemplateFile $ARMTemplateFile -TemplateParameterFile $ARMTemplateParameterFile -Mode Incremental -WhatIf
 #endregion

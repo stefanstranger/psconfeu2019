@@ -10,6 +10,8 @@ Demo notes - PowerShell for prototyping
 
 - DON'T FORGET to login to Azure Subscription and open Azure Portal website.
 
+- DON'T FORGET to enable Az Mask extension.
+
 #################################################
 Demo 1 - Polaris - 5 minutes
 #################################################
@@ -77,13 +79,13 @@ REMARK: Maybe it saves time to skip the deployment of an Azure Function and have
 
 
 #################################################
-Demo 8 - Show Azure Function Code - 5 minutes
+Demo 7.a - Show Azure Function Code - 5 minutes
 #################################################
 
 Show how to use the ManageAADGroup PowerShell module in a PowerShell Azure Function.
 
 #################################################
-Demo 9 - Publish PowerShell Azure Function - 5 minutes
+Demo 7.b - Publish PowerShell Azure Function - 5 minutes
 #################################################
 
 Use the invoke-build script to build and publish the Azure Function
@@ -91,10 +93,7 @@ Use the invoke-build script to build and publish the Azure Function
 Run invoke-build default task
 
 #################################################
-Demo 10 - Demo PowerShell Azure Function - 5 minutes
+Demo 17.c - Demo PowerShell Azure Function - 5 minutes
 #################################################
 
 Run Demo-7-AADGroup-AzureFunction.ps1
-
-
-
