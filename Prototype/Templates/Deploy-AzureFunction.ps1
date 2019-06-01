@@ -21,6 +21,9 @@ Add-Azaccount -Subscription $SubscriptionName
 if (!(Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction SilentlyContinue)) {
     New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 }
+else {
+    Write-Output -InputObject ('Resource Group: {0} already exists' -f $ResourceGroupName)
+}
 #endregion
 
 #region deploy Azure Function. Added whatif to prevent time loss.
