@@ -1,7 +1,7 @@
 <#
     PowerShell module for creating cross-platform websites and REST APIs. 
     
-    Link: https://universaldashboard.iol
+    Link: https://universaldashboard.io
 
     Simple example of an API (listening on port 8686) returning running Processes on localhost
 
@@ -9,6 +9,10 @@
     - Collapse regions - Ctrl K + Ctrl 8
     - Restart integrated PowerShell host to make sure no session data from Polaris is kept.
 #>
+
+#region clean op host
+Remove-Module -Name Polaris, Polaris.Class, PolarisMiddleWare.Class, PolarisRequest.Class, PolarisResponse.Class, UniversalDashboard.Community -ErrorAction SilentlyContinue
+#endregion
 
 #region Import Universal Dashboard Community PowerShell Module
 Import-Module -Name 'UniversalDashboard.Community' -Verbose

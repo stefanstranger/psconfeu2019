@@ -33,3 +33,7 @@ Get-PolarisRoute
 Remove-PolarisRoute -path /process
 Stop-Polaris
 #endregion
+
+<#
+    restart Integrated Terminal 
+#>

@@ -36,7 +36,7 @@ invoke-build C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\AzureFunct
 #endregion
 
 #region Create AAD Group local development
-# Run from another host
+# Run from another host. Don't forget to copy variables to other host.
 $Body = @{
     'DisplayName'       = $DisplayName
     'Description'       = $Description

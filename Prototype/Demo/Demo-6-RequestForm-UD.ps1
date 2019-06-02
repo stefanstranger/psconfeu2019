@@ -43,3 +43,7 @@ Start-UDDashboard -port 80 -Dashboard $RequestDashboard -Name Request
 #region Stop Dashboard
 Stop-UDDashboard -Name Request
 #endregion
+
+#region Stop UD REST API
+Stop-UDRestApi -Name RESTAPI
+#endregion

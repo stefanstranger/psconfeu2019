@@ -187,7 +187,3 @@ $body = @{
 }
 Invoke-RestMethod -Uri http://localhost:8080/api/removegroup -Method POST -Body $body -OutVariable Result
 #endregion
-
-#region Stop UD REST API
-Stop-UDRestApi -Name RESTAPI
-#endregion
