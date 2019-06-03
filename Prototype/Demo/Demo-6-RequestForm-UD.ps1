@@ -40,6 +40,10 @@ $RequestDashboard = New-UDDashboard -Title 'Request Group' -Content {
 Start-UDDashboard -port 80 -Dashboard $RequestDashboard -Name Request
 #endregion
 
+#region open Request from in Browser
+Start-Process 'http://localhost:80'
+#endregion
+
 #region Stop Dashboard
 Stop-UDDashboard -Name Request
 #endregion
