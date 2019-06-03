@@ -179,6 +179,7 @@ $body = @{
 }
 Invoke-RestMethod -Uri http://localhost:8080/api/getgroup -Method GET -Body $body -OutVariable Result
 # Or open the browser with the following url: http://localhost:8080/api/getgroup?DisplayName=PSConfEu-Demo-Group
+Start-Process 'http://localhost:8080/api/getgroup?DisplayName=PSConfEu-Demo-Group'
 #endregion
 
 #region Call REST API to remove Group
