@@ -35,6 +35,11 @@ invoke-build C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\AzureFunct
 invoke-build C:\Users\stefstr\Documents\GitHub\psconfeu2019\Prototype\AzureFunction.build.ps1 -Task Start
 #endregion
 
+#region Get AAD Group local developent
+# Run from another host. Don't forget to copy variables to other host.
+Invoke-RestMethod -Method Get -Uri ('http://localhost:7071/api/GetGroup?Displayname={0}' -f $DisplayName)
+#endregion
+
 #region Create AAD Group local development
 # Run from another host. Don't forget to copy variables to other host.
 $Body = @{
