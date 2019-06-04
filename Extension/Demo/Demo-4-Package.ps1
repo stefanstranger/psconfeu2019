@@ -24,3 +24,11 @@ Start-Process 'https://marketplace.visualstudio.com/manage/publishers/slvstrange
 #region View Extension
 Start-Process 'https://marketplace.visualstudio.com/items?itemName=SLVStranger.PSConfEU-Demo-Extension'
 #endregion
+
+#region share Extension
+# Demo you can share Extension via the Marketplace portal
+#endregion
+
+#region clean up
+Invoke-Build -File ..\PSJwtExtension\PSJwtExtension.build.ps1 -Task clean
+#endregion
