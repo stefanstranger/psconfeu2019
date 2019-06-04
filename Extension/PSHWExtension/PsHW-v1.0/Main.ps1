@@ -27,7 +27,7 @@ switch ($action) {
         #endregion
 
         Write-Host "New Hello World"
-        ConvertFrom-JWT -Token $Token       
+        New-HelloWorld -FirstName $FirstName -LastName $LastName     
     }
     default {
         throw 'Unknow action'
