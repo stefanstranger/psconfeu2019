@@ -14,7 +14,7 @@ Import-Module $PSScriptRoot\ps_modules\PSHelloWorld\0.1.0\PSHelloWorld.psd1
 
 #region Execute selected Action
 switch ($action) {
-    "New-HelloWorld" {
+    "NewHelloWorld" {
         Write-Verbose "Get Hello World"
         $FirstName = Get-VstsInput -Name FirstName -Require
         $LastName = Get-VstsInput -Name LastName -Require
