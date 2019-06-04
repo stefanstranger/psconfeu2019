@@ -1,3 +1,14 @@
+<#
+    DON'T FORGET to collapse all regions in demo scripts
+    Ctrl + K Ctrl +8
+
+    #####################################################
+    Demo how to use the PSExtensionHelper PowerShell Module. 10 mins
+    #####################################################
+
+    This module converts commands from a PowerShell module in a task.json
+#>
+
 #region Import Module PSExtension
 Remove-Module PSExtensionHelper -ErrorAction SilentlyContinue
 Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\Extra\PSExtensionHelper\PSExtensionHelper.psd1 -verbose
