@@ -19,7 +19,7 @@ Import-Module -Name PSJwt -Verbose
 # JWT claims can be typically used to pass identity of authenticated users between an identity provider and a service provider.
 
 Get-Help ConvertFrom-JWT -Full
-Get-Help Convertto-JWT -Full
+Get-Help ConvertTo-JWT -Full
 #endregion
 
 #region Syntax of functions
@@ -36,7 +36,7 @@ ConvertFrom-Jwt -Token $Token
 [timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds((ConvertFrom-Jwt -Token $Token).exp))
 #endregion
 
-#region Converto-Jwt
+#region ConvertTo-Jwt
 $iat = [DateTimeOffset]::Now.ToUnixTimeSeconds(); ('Unix Issued at Date:  {0}. Local Time: {1} ' -f $iat, [DateTimeOffset]::Now)
 $exp = [DateTimeOffset]::Now.AddHours(1).ToUnixTimeSeconds(); ('Unix Expiration Date: {0}. Local Time: {1}' -f $exp, [DateTimeOffset]::Now.AddHours(1))
 
@@ -45,5 +45,3 @@ ConvertTo-Jwt -secret 'qwerty' -OutVariable CustomToken
 
 ConvertFrom-JWT -Token $CustomToken
 #endregion
-
-[timezone]::CurrentTimeZone.ToLocalTime(([datetime]'1/1/1970').AddSeconds(1559202761))
