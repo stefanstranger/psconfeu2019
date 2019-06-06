@@ -14,7 +14,7 @@ Remove-Module PSExtensionHelper -ErrorAction SilentlyContinue
 Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\Extra\PSExtensionHelper\PSExtensionHelper.psd1 -verbose
 #endregion
 
-#region variables
+#region variables for PSJwt PowerShell Module
 $params = @{
     Name               = 'PSJwt'
     TaskName           = 'JWT-Demo'
@@ -46,14 +46,14 @@ $archivePath = Join-Path (Split-path $((Get-Location).Path)) -ChildPath "\PSJwtE
 Import-Module C:\Users\stefstr\Documents\GitHub\psconfeu2019\Extension\Extra\PSHelloWorld\Output\PSHelloWorld\0.1.0\PSHelloWorld.psd1 -Verbose
 #endregion
 
-#region variables
+#region variables for PSHelloWorld Module convertion
 $params = @{
     Name               = 'PSHelloWorld'
     TaskName           = 'HelloWorld-Demo'
     Description        = 'Hello World Demo for PowerShell Conference EU 2019'
     Category           = 'Deploy'
     Author             = 'Stefan Stranger'
-    Version            = '1.0.2'
+    Version            = '1.0.1'
     Preview            = $true
     InstanceNameFormat = 'HelloWorld Extension Demo'
     OutFile            = "$env:Temp\task.json"
