@@ -5,7 +5,7 @@
   "main": "vss-extension.json",
   "dependencies": {},
   "devDependencies": {
-    "npm": "^6.9.0",
+    "npm": "^6.13.4",
     "tfx-cli": "^0.7.5",
     "vss-web-extension-sdk": "^5.141.0"
   },
