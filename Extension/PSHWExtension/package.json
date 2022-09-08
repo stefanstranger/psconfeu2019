@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "npm": "^6.9.0",
-    "tfx-cli": "^0.7.5",
+    "tfx-cli": "^0.12.0",
     "vss-web-extension-sdk": "^5.141.0"
   },
   "author": "Stefan Stranger - Microsoft",
